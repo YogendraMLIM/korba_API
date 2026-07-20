@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environment
+py-env/
+venv/
+.env
+
+# VS Code
+.vscode/
+
+# Uploaded documents
+documents/
+
+# Archives
+*.rar
+*.zip
+
+# Excel files (optional)
+*.xlsx
