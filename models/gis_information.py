@@ -1,4 +1,3 @@
-
 from sqlalchemy import Boolean, ForeignKey, String
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
@@ -11,18 +10,11 @@ class GISInformation(Base, TimestampMixin):
 
     id: Mapped[int] = mapped_column(primary_key=True)
 
-    parcel_no: Mapped[str] = mapped_column(
-        String(50),
+    property_uid: Mapped[str] = mapped_column(
+        ForeignKey("propertytax.parcel_master.property_uid"),
         nullable=False,
         index=True
     )
-    
-    property_id: Mapped[str] = mapped_column(
-    ForeignKey("propertytax.parcel_master.property_id"),
-    nullable=False,
-    index=True
-)
-
 
     gis_property_polygon_available: Mapped[bool] = mapped_column(
         Boolean,
@@ -53,6 +45,22 @@ class GISInformation(Base, TimestampMixin):
         Boolean,
         default=False,
         nullable=False
+    )
+
+    # Store uploaded image paths
+    property_photo_path: Mapped[str | None] = mapped_column(
+        String(500),
+        nullable=True
+    )
+
+    front_elevation_photo_path: Mapped[str | None] = mapped_column(
+        String(500),
+        nullable=True
+    )
+
+    name_plate_photo_path: Mapped[str | None] = mapped_column(
+        String(500),
+        nullable=True
     )
 
     parcel = relationship(

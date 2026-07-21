@@ -10,17 +10,23 @@ class OwnerDetails(Base, TimestampMixin):
 
     id: Mapped[int] = mapped_column(primary_key=True)
 
-    parcel_no: Mapped[str] = mapped_column(
-        String(50),
+#     parcel_no: Mapped[str] = mapped_column(
+#         String(50),
+#         nullable=False,
+#         index=True
+#     )
+        
+#     property_id: Mapped[str] = mapped_column(
+#     ForeignKey("propertytax.parcel_master.property_id"),
+#     nullable=False,
+#     index=True
+# )
+
+    property_uid: Mapped[str] = mapped_column(
+        ForeignKey("propertytax.parcel_master.property_uid"),
         nullable=False,
         index=True
     )
-        
-    property_id: Mapped[str] = mapped_column(
-    ForeignKey("propertytax.parcel_master.property_id"),
-    nullable=False,
-    index=True
-)
 
 
     owner_name: Mapped[str] = mapped_column(

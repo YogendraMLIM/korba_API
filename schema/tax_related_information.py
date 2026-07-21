@@ -24,7 +24,7 @@ class TaxRelatedInformationBase(BaseModel):
         ge=0
     )
     
-    tax_rate_zone: str | None = Field(default=None, max_length=30)
+   
 
     exempted_property: bool
 
@@ -74,7 +74,7 @@ class TaxRelatedInformationUpdate(BaseModel):
         ge=0
     )
     
-    tax_rate_zone: str | None = None
+  
 
     exempted_property: bool | None = None
 

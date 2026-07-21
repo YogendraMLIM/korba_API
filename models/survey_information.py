@@ -26,7 +26,12 @@ class SurveyInformation(Base, TimestampMixin):
     )
     
     property_id: Mapped[str] = mapped_column(
-    ForeignKey("propertytax.parcel_master.property_id"),
+    nullable=False,
+    index=True
+)
+    
+    property_uid: Mapped[str] = mapped_column(
+    ForeignKey("propertytax.parcel_master.property_uid"),
     nullable=False,
     index=True
 )
@@ -35,6 +40,17 @@ class SurveyInformation(Base, TimestampMixin):
         String(50),
         nullable=True,
         index=True
+    )
+    
+    
+    property_location: Mapped[str] = mapped_column(
+        String(100),
+        nullable=False
+    )
+    
+    tax_rate_zone: Mapped[str] = mapped_column(
+        String(30),
+        nullable=True
     )
 
 

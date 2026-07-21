@@ -18,17 +18,23 @@ class TaxRelatedInformation(Base, TimestampMixin):
 
     id: Mapped[int] = mapped_column(primary_key=True)
 
-    parcel_no: Mapped[str] = mapped_column(
-        String(50),
+#     parcel_no: Mapped[str] = mapped_column(
+#         String(50),
+#         nullable=False,
+#         index=True
+#     )
+    
+#     property_id: Mapped[str] = mapped_column(
+#     ForeignKey("propertytax.parcel_master.property_id"),
+#     nullable=False,
+#     index=True
+# )
+
+    property_uid: Mapped[str] = mapped_column(
+        ForeignKey("propertytax.parcel_master.property_uid"),
         nullable=False,
         index=True
     )
-    
-    property_id: Mapped[str] = mapped_column(
-    ForeignKey("propertytax.parcel_master.property_id"),
-    nullable=False,
-    index=True
-)
 
 
     existing_property_tax_no: Mapped[str | None] = mapped_column(
@@ -37,10 +43,7 @@ class TaxRelatedInformation(Base, TimestampMixin):
         nullable=True
     )
     
-    tax_rate_zone: Mapped[str] = mapped_column(
-        String(30),
-        nullable=True
-    )
+    
 
     tax_paid_till: Mapped[date | None] = mapped_column(
         Date,

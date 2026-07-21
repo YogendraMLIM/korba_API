@@ -11,17 +11,10 @@ class OccupierDetails(Base, TimestampMixin):
     __tablename__ = "occupier_details"
 
     id: Mapped[int] = mapped_column(primary_key=True)
-
-    parcel_no: Mapped[str] = mapped_column(
-        String(50),
+    property_uid: Mapped[str] = mapped_column(
+        ForeignKey("propertytax.parcel_master.property_uid"),
         nullable=False,
         index=True
-    )
-    
-    property_id: Mapped[str] = mapped_column(
-    ForeignKey("propertytax.parcel_master.property_id"),
-    nullable=False,
-    index=True
 )
 
 

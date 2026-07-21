@@ -30,7 +30,6 @@ class PropertyDetailsBase(BaseModel):
         "Government"
     ]
     
-    property_location: str = Field(..., max_length=100)
 
 
 class PropertyDetailsCreate(PropertyDetailsBase):
@@ -63,7 +62,6 @@ class PropertyDetailsUpdate(BaseModel):
         "Government"
     ] | None = None
     
-    property_location: str | None = Field(default=None, max_length=100)
 
 
 class PropertyDetailsResponse(PropertyDetailsBase):

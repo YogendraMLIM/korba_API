@@ -5,11 +5,13 @@ from pydantic import (
     BaseModel,
     ConfigDict,
     Field,
+    field_validator,
     model_validator,
 )
 
 
 class LandBuildingInformationBase(BaseModel):
+    model_config = ConfigDict(populate_by_name=True)
 
  
     plot_area: float = Field(..., gt=0)
@@ -21,6 +23,43 @@ class LandBuildingInformationBase(BaseModel):
     second_floor_area: float | None = Field(default=0, ge=0)
 
     third_floor_area: float | None = Field(default=0, ge=0)
+
+    number_of_basement_levels: int | None = Field(
+        default=None,
+        ge=0,
+        le=5,
+        alias="numberOfBasementLevels",
+    )
+
+    basement_area_1: float | None = Field(
+        default=None,
+        ge=0,
+        alias="basementArea1",
+    )
+
+    basement_area_2: float | None = Field(
+        default=None,
+        ge=0,
+        alias="basementArea2",
+    )
+
+    basement_area_3: float | None = Field(
+        default=None,
+        ge=0,
+        alias="basementArea3",
+    )
+
+    basement_area_4: float | None = Field(
+        default=None,
+        ge=0,
+        alias="basementArea4",
+    )
+
+    basement_area_5: float | None = Field(
+        default=None,
+        ge=0,
+        alias="basementArea5",
+    )
 
     number_of_floors: int = Field(..., ge=0, le=99)
 
@@ -42,6 +81,21 @@ class LandBuildingInformationBase(BaseModel):
         "Tile",
         "Other"
     ]
+
+    @field_validator(
+        "number_of_basement_levels",
+        "basement_area_1",
+        "basement_area_2",
+        "basement_area_3",
+        "basement_area_4",
+        "basement_area_5",
+        mode="before",
+    )
+    @classmethod
+    def empty_string_to_none(cls, value):
+        if value == "":
+            return None
+        return value
 
     @model_validator(mode="after")
     def validate_building(self):
@@ -96,6 +150,37 @@ class LandBuildingInformationUpdate(BaseModel):
     first_floor_area: float | None = None
     second_floor_area: float | None = None
     third_floor_area: float | None = None
+    number_of_basement_levels: int | None = Field(
+        default=None,
+        ge=0,
+        le=5,
+        alias="numberOfBasementLevels",
+    )
+    basement_area_1: float | None = Field(
+        default=None,
+        ge=0,
+        alias="basementArea1",
+    )
+    basement_area_2: float | None = Field(
+        default=None,
+        ge=0,
+        alias="basementArea2",
+    )
+    basement_area_3: float | None = Field(
+        default=None,
+        ge=0,
+        alias="basementArea3",
+    )
+    basement_area_4: float | None = Field(
+        default=None,
+        ge=0,
+        alias="basementArea4",
+    )
+    basement_area_5: float | None = Field(
+        default=None,
+        ge=0,
+        alias="basementArea5",
+    )
     number_of_floors: int | None = None
     year_of_construction: int | None = None
     total_builtup_area: float | None = None
@@ -111,6 +196,23 @@ class LandBuildingInformationUpdate(BaseModel):
         "Tile",
         "Other"
     ] | None = None
+
+    model_config = ConfigDict(populate_by_name=True)
+
+    @field_validator(
+        "number_of_basement_levels",
+        "basement_area_1",
+        "basement_area_2",
+        "basement_area_3",
+        "basement_area_4",
+        "basement_area_5",
+        mode="before",
+    )
+    @classmethod
+    def empty_string_to_none(cls, value):
+        if value == "":
+            return None
+        return value
 
 
 class LandBuildingInformationResponse(

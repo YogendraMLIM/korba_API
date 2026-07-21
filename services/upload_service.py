@@ -1,63 +1,131 @@
+import base64
 from pathlib import Path
-import shutil
-from fastapi import UploadFile
-from fastapi import UploadFile
-
-from pathlib import Path
-import shutil
-from fastapi import UploadFile
 
 BASE_UPLOAD_DIR = Path("documents")
 
-
-def save_document(
-    property_id: str,
-    document_name: str,
-    file: UploadFile,
-) -> str:
-    """
-    Saves as:
-    documents/<document_name>/<property_id>/<document_name>.<ext>
-    """
-
-    extension = Path(file.filename).suffix.lower()
-
-    folder = BASE_UPLOAD_DIR / document_name / property_id
-    folder.mkdir(parents=True, exist_ok=True)
-
-    filename = f"{document_name}{extension}"
-
-    file_path = folder / filename
-
-    with open(file_path, "wb") as buffer:
-        shutil.copyfileobj(file.file, buffer)
-
-    return file_path.as_posix()
+DOCUMENT_FIELDS = [
+    "aadhaar_copy",
+    "electricity_bill",
+    "water_bill",
+    "sale_deed",
+    "property_tax_receipt",
+    "building_permission",
+    "other_documents",
+]
 
 
-
-
-def save_documents(
+def save_base64_documents(
+    parcel_no: str,
     property_id: str,
     documents: dict,
-) -> dict:
+) -> list[dict]:
+    """
+    Save Base64 documents and return document records.
 
-    saved_documents = {}
+    Returns:
+    [
+        {
+            "document_type": "aadhaar_copy",
+            "file_path": "documents/aadhaar_copy/P001/1001/aadhaar_copy1.jpg"
+        },
+        ...
+    ]
+    """
 
-    for key, value in documents.items():
+    saved_documents = []
 
-        if value is None:
-            saved_documents[key] = None
+    for field in DOCUMENT_FIELDS:
+
+        files = documents.get(f"{field}_files", [])
+
+        if not files:
             continue
 
-        if not isinstance(value, UploadFile):
-            saved_documents[key] = value
-            continue
-
-        saved_documents[key] = save_document(
-            property_id=property_id,
-            document_name=key,
-            file=value
+        folder = (
+            BASE_UPLOAD_DIR
+            / field
+            / str(parcel_no)
+            / str(property_id)
         )
 
+        folder.mkdir(parents=True, exist_ok=True)
+
+        for index, file_data in enumerate(files, start=1):
+
+            if "," in file_data:
+                header, encoded = file_data.split(",", 1)
+
+                if "png" in header:
+                    ext = ".png"
+                elif "pdf" in header:
+                    ext = ".pdf"
+                elif "jpeg" in header or "jpg" in header:
+                    ext = ".jpg"
+                else:
+                    ext = ".bin"
+            else:
+                encoded = file_data
+                ext = ".jpg"
+
+            filename = f"{field}{index}{ext}"
+
+            filepath = folder / filename
+
+            with open(filepath, "wb") as f:
+                f.write(base64.b64decode(encoded))
+
+            saved_documents.append(
+                {
+                    "document_type": field,
+                    "file_path": filepath.as_posix(),
+                }
+            )
+
     return saved_documents
+
+
+def save_single_base64_image(
+    parcel_no: str,
+    property_id: str,
+    category: str,
+    file_name: str,
+    file_data: str | None,
+) -> str | None:
+    """
+    Save a single Base64 image and return the relative file path.
+    """
+
+    if not file_data:
+        return None
+
+    if "," in file_data:
+        header, encoded = file_data.split(",", 1)
+
+        if "png" in header:
+            ext = ".png"
+        elif "jpeg" in header or "jpg" in header:
+            ext = ".jpg"
+        elif "webp" in header:
+            ext = ".webp"
+        else:
+            ext = ".bin"
+    else:
+        encoded = file_data
+        ext = ".jpg"
+
+    folder = (
+        BASE_UPLOAD_DIR
+        / category
+        / str(parcel_no)
+        / str(property_id)
+    )
+
+    folder.mkdir(parents=True, exist_ok=True)
+
+    filename = f"{file_name}{ext}"
+    filepath = folder / filename
+
+    with open(filepath, "wb") as f:
+        f.write(base64.b64decode(encoded))
+
+    return filepath.as_posix()

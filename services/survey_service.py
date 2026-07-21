@@ -1,7 +1,8 @@
 from utils.helper import generate_unique_id
 from sqlalchemy.orm import Session
 from sqlalchemy.exc import SQLAlchemyError
-from .upload_service import save_documents
+from .upload_service import save_base64_documents, save_single_base64_image
+from sqlalchemy.inspection import inspect
 
 from models import (
     ParcelMaster,
@@ -33,7 +34,7 @@ MODEL_MAPPING = {
     "gis_information": GISInformation,
     "smart_addressing": SmartAddressing,
     "verification": Verification,
-    "documents_collected": DocumentsCollected,
+    # "documents_collected": DocumentsCollected,
     "surveyor_remarks": SurveyorRemarks,
     # "owner_declaration": OwnerDeclaration,
 }
@@ -43,116 +44,173 @@ class SurveyService:
 
     def __init__(self, db: Session):
         self.db = db
-
+        
     def save_complete_survey(self, payload: dict):
-
         try:
-
             created_objects = {}
+
             survey = payload["survey_information"]
 
             parcel_no = survey.get("parcel_no")
-            # property_id = survey["property_id"]
-            property_id = survey.get("property_id", None)
-            
-            if not property_id:
-                raise ValueError("property_id is required in survey_information")
-            
+            property_id = survey.get("property_id")
+
             if not parcel_no:
                 raise ValueError("parcel_no is required in survey_information")
-            
-            # create New SurveyId
-            # survey.survey_id = generate_unique_id(self.db, SurveyInformation, "survey_id", 8, "SID")
-            
+
+            if not property_id:
+                raise ValueError("property_id is required in survey_information")
+
+            # Generate Property UID
+            property_uid = f"{parcel_no}{property_id}"
+
+            # Generate Survey ID
             survey["survey_id"] = generate_unique_id(
-            db= self.db,
-            model=SurveyInformation,
-            field_name="survey_id",
-            size=8,
-            prefix="SID"
-        ),
-            
-            
-        #       surveyor_id = generate_unique_id(
-        #     db=self.db,
-        #     model=SurveyInformation,
-        #     field_name="survey_id",
-        #     size=8,
-        #     prefix="SUR"
-        # ),
-            
-            payload["documents_collected"] = save_documents(
-                property_id,
-                payload.get("documents_collected", {})
+                db=self.db,
+                model=SurveyInformation,
+                field_name="survey_id",
+                size=8,
+                prefix="SID"
             )
-            
-            
-            # Check if the parcel already exists in the database
+
+            survey["property_uid"] = property_uid
+
+            # -----------------------------------
+            # Save Documents
+            # -----------------------------------
+            saved_documents = save_base64_documents(
+                parcel_no=parcel_no,
+                property_id=property_id,
+                documents=payload.get("documents_collected", {})
+            )
+
+            # -----------------------------------
+            # Save GIS Images
+            # -----------------------------------
+            gis_info = payload.get("gis_information")
+
+            if gis_info:
+
+                gis_info["property_photo_path"] = save_single_base64_image(
+                    parcel_no=parcel_no,
+                    property_id=property_id,
+                    category="gis",
+                    file_name="property_photo",
+                    file_data=(gis_info.get("property_photo_base64") or [None])[0]
+                )
+
+                gis_info["front_elevation_photo_path"] = save_single_base64_image(
+                    parcel_no=parcel_no,
+                    property_id=property_id,
+                    category="gis",
+                    file_name="front_elevation_photo",
+                    file_data=(gis_info.get("front_elevation_photo_base64") or [None])[0]
+                )
+
+                gis_info["name_plate_photo_path"] = save_single_base64_image(
+                    parcel_no=parcel_no,
+                    property_id=property_id,
+                    category="gis",
+                    file_name="name_plate_photo",
+                    file_data=(gis_info.get("name_plate_photo_base64") or [None])[0]
+                )
+
+                # Remove temporary frontend fields
+                gis_info.pop("property_photo_base64", None)
+                gis_info.pop("front_elevation_photo_base64", None)
+                gis_info.pop("name_plate_photo_base64", None)
+
+                # Remove old keys if present
+                gis_info.pop("property_photo", None)
+
+            # -----------------------------------
+            # Create Parcel Master
+            # -----------------------------------
             parcel = (
-            self.db.query(ParcelMaster)
-            .filter(
-                ParcelMaster.parcel_no == parcel_no,
-                ParcelMaster.property_id == property_id
+                self.db.query(ParcelMaster)
+                .filter(ParcelMaster.property_uid == property_uid)
+                .first()
             )
-            .first()
-            )   
-            
-            # If the parcel does not exist, create a new ParcelMaster object
+
             if not parcel:
                 parcel = ParcelMaster(
+                    property_uid=property_uid,
                     parcel_no=parcel_no,
                     property_id=property_id
                 )
                 self.db.add(parcel)
                 self.db.flush()
 
+            # -----------------------------------
+            # Save all sections
+            # -----------------------------------
             for section, model in MODEL_MAPPING.items():
-                section_data = payload.get(section)
-                if not section_data:
+
+                if section == "documents_collected":
                     continue
-                section_data["parcel_no"] = parcel.parcel_no
-                section_data["property_id"] = parcel.property_id
+
+                section_data = payload.get(section)
+
                 if not section_data:
                     continue
 
+                section_data["property_uid"] = property_uid
+
+                if model is SurveyInformation:
+                    section_data["parcel_no"] = parcel_no
+                    section_data["property_id"] = property_id
+                    section_data["property_location"] = (
+                        section_data.get("property_location") or "Unknown"
+                    )
+                else:
+                    section_data.pop("parcel_no", None)
+                    section_data.pop("property_id", None)
+
+                # Keep only columns defined in the SQLAlchemy model
+                valid_columns = {
+                    column.key
+                    for column in inspect(model).mapper.column_attrs
+                }
+
+                section_data = {
+                    key: value
+                    for key, value in section_data.items()
+                    if key in valid_columns
+                }
+
                 obj = model(**section_data)
+
                 self.db.add(obj)
                 created_objects[section] = obj
-                
+
+            # -----------------------------------
+            # Save Document Records
+            # -----------------------------------
+            for doc in saved_documents:
+                self.db.add(
+                    DocumentsCollected(
+                        property_uid=property_uid,
+                        document_type=doc["document_type"],
+                        file_path=doc["file_path"]
+                    )
+                )
+
             self.db.commit()
 
             return {
                 "success": True,
-                "message": "Survey saved successfully"
+                "message": "Survey submitted successfully.",
+                "property_uid": property_uid,
+                "survey_id": survey["survey_id"]
             }
 
-        except SQLAlchemyError as e:
-
+        except SQLAlchemyError:
             self.db.rollback()
-
-            raise e
-        
-    def save_bulk_surveys(self, surveys: list[dict]):
-        results = []
-
-        try:
-            for survey in surveys:
-                result = self.save_complete_survey(survey)
-                results.append(result)
-
-            self.db.commit()
-
-            return {
-                "message": "Bulk survey submitted successfully.",
-                "total_records": len(results),
-                "data": results
-            }
+            raise
 
         except Exception:
             self.db.rollback()
             raise
-        
-        
+
     def get_completed_survey_data(self, surveyor_id: str):
         try:
             # Get all unique property IDs for the surveyor

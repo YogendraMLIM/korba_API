@@ -10,17 +10,23 @@ class PropertyDetails(Base, TimestampMixin):
 
     id: Mapped[int] = mapped_column(primary_key=True)
 
-    parcel_no: Mapped[str] = mapped_column(
-        String(50),
-        nullable=False,
-        index=True
-    )
+    # parcel_no: Mapped[str] = mapped_column(
+    #     String(50),
+    #     nullable=False,
+    #     index=True
+    # )
     
-    property_id: Mapped[str] = mapped_column(
-    ForeignKey("propertytax.parcel_master.property_id"),
+    # property_id: Mapped[str] = mapped_column(
+    # ForeignKey("propertytax.parcel_master.property_id"),
+    # nullable=False,
+    # index=True
+    # )
+    
+    property_uid: Mapped[str] = mapped_column(
+    ForeignKey("propertytax.parcel_master.property_uid"),
     nullable=False,
     index=True
-    )
+)
 
 
     property_type: Mapped[str] = mapped_column(
@@ -43,10 +49,7 @@ class PropertyDetails(Base, TimestampMixin):
         nullable=False
     )
     
-    property_location: Mapped[str] = mapped_column(
-        String(100),
-        nullable=False
-    )
+   
 
     parcel = relationship(
         "ParcelMaster",

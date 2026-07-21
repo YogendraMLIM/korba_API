@@ -8,24 +8,25 @@ from models.base import TimestampMixin
 class ParcelMaster(Base, TimestampMixin):
     __tablename__ = "parcel_master"
 
-    # Unique Parcel Number
-    parcel_no: Mapped[str] = mapped_column(
-        String(50),
+    # Combined Unique ID
+    property_uid: Mapped[str] = mapped_column(
+        String(120),
         primary_key=True,
         index=True
     )
-    
-    
-      # Property ID
-    property_id: Mapped[str] = mapped_column(
+
+    parcel_no: Mapped[str] = mapped_column(
         String(50),
-        unique=True,
         nullable=False,
         index=True
     )
-    
 
-    # Can be used to activate/deactivate parcels
+    property_id: Mapped[str] = mapped_column(
+        String(50),
+        nullable=False,
+        index=True
+    )
+
     is_active: Mapped[bool] = mapped_column(
         Boolean,
         default=True,

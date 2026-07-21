@@ -16,25 +16,29 @@ class SmartAddressing(Base, TimestampMixin):
 
     __table_args__ = (
         UniqueConstraint(
-            "street_code",
-            "building_sequence_no",
             name="uq_street_building_sequence",
         ),
     )
 
     id: Mapped[int] = mapped_column(primary_key=True)
 
-    parcel_no: Mapped[str] = mapped_column(
-        String(50),
-        nullable=False,
-        index=True,
-    )
+    # parcel_no: Mapped[str] = mapped_column(
+    #     String(50),
+    #     nullable=False,
+    #     index=True,
+    # )
 
-    property_id: Mapped[str] = mapped_column(
-        ForeignKey("propertytax.parcel_master.property_id"),
-        nullable=False,
-        index=True,
-    )
+    # property_id: Mapped[str] = mapped_column(
+    #     ForeignKey("propertytax.parcel_master.property_id"),
+    #     nullable=False,
+    #     index=True,
+    # )
+    
+    property_uid: Mapped[str] = mapped_column(
+    ForeignKey("propertytax.parcel_master.property_uid"),
+    nullable=False,
+    index=True
+)
 
     ddn_generated: Mapped[bool | None] = mapped_column(
         Boolean,

@@ -23,17 +23,23 @@ class OwnerDeclaration(Base, TimestampMixin):
     #     index=True
     # )
     
-    parcel_no: Mapped[str] = mapped_column(
-        String(50),
+    # parcel_no: Mapped[str] = mapped_column(
+    #     String(50),
+    #     nullable=False,
+    #     index=True
+    # )
+    
+#     property_id: Mapped[str] = mapped_column(
+#     ForeignKey("propertytax.parcel_master.property_id"),
+#     nullable=False,
+#     index=True
+# )
+
+    property_uid: Mapped[str] = mapped_column(
+        ForeignKey("propertytax.parcel_master.property_uid"),
         nullable=False,
         index=True
     )
-    
-    property_id: Mapped[str] = mapped_column(
-    ForeignKey("propertytax.parcel_master.property_id"),
-    nullable=False,
-    index=True
-)
 
 
     owner_declaration_accepted: Mapped[bool] = mapped_column(
