@@ -17,20 +17,26 @@ class ParcelMaster(Base, TimestampMixin):
 
     parcel_no: Mapped[str] = mapped_column(
         String(50),
-        nullable=False,
+       nullable=True,
         index=True
     )
+    
+    existing_property_id: Mapped[str | None] = mapped_column(
+            String(50),
+            nullable=True,
+            index=True
+        )
 
     property_id: Mapped[str] = mapped_column(
         String(50),
-        nullable=False,
+       nullable=True,
         index=True
     )
 
     is_active: Mapped[bool] = mapped_column(
         Boolean,
         default=True,
-        nullable=False
+       nullable=True
     )
 
     # Relationships
@@ -70,6 +76,12 @@ class ParcelMaster(Base, TimestampMixin):
         back_populates="parcel",
         cascade="all, delete-orphan",
         uselist=False
+    )
+
+    land_building_areas = relationship(
+        "LandBuildingArea",
+        back_populates="parcel",
+        cascade="all, delete-orphan"
     )
 
     usage_details = relationship(

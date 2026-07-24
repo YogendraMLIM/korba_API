@@ -21,18 +21,18 @@ class SurveyInformation(Base, TimestampMixin):
     
     parcel_no: Mapped[str] = mapped_column(
         String(50),
-        nullable=False,
+       nullable=True,
         index=True
     )
     
     property_id: Mapped[str] = mapped_column(
-    nullable=False,
+   nullable=True,
     index=True
 )
     
     property_uid: Mapped[str] = mapped_column(
     ForeignKey("propertytax.parcel_master.property_uid"),
-    nullable=False,
+   nullable=True,
     index=True
 )
     
@@ -45,7 +45,7 @@ class SurveyInformation(Base, TimestampMixin):
     
     property_location: Mapped[str] = mapped_column(
         String(100),
-        nullable=False
+       nullable=True
     )
     
     tax_rate_zone: Mapped[str] = mapped_column(
@@ -58,43 +58,43 @@ class SurveyInformation(Base, TimestampMixin):
     survey_id: Mapped[str] = mapped_column(
         String(50),
         unique=True,
-        nullable=False,
+       nullable=True,
         index=True
     )
 
     survey_date: Mapped[datetime] = mapped_column(
         DateTime,
-        nullable=False
+       nullable=True
     )
 
     surveyor_name: Mapped[str] = mapped_column(
         String(150),
-        nullable=False
+       nullable=True
     )
 
     surveyor_id: Mapped[str] = mapped_column(
         String(30),
-        nullable=False
+       nullable=True
     )
 
-    ward_no: Mapped[str] = mapped_column(
-        String(20),  # Adjust length as needed
-        nullable=False
-    )
+    ward_no: Mapped[int] = mapped_column(
+        Integer,  
+        default=1,
+       nullable=True)
 
     zone: Mapped[str] = mapped_column(
         String(50),
-        nullable=False
+       nullable=True
     )
 
     colony_locality: Mapped[str] = mapped_column(
         String(150),
-        nullable=False
+       nullable=True
     )
 
     street_road_name: Mapped[str] = mapped_column(
         String(150),
-        nullable=False
+       nullable=True
     )
 
     lane_no: Mapped[str | None] = mapped_column(
@@ -111,12 +111,12 @@ class SurveyInformation(Base, TimestampMixin):
 
     gps_latitude: Mapped[float] = mapped_column(
         Numeric(10, 7),
-        nullable=False
+       nullable=True
     )
 
     gps_longitude: Mapped[float] = mapped_column(
         Numeric(10, 7),
-        nullable=False
+       nullable=True
     )
     
     

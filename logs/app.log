@@ -1,0 +1,1111 @@
+2026-07-23 09:57:29,202 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=GET | path=/ | status=200 | duration_ms=1.26
+2026-07-23 09:57:29,643 | ERROR | korba_api | 422 validation error on POST /survey/survey-form | errors=[{'type': 'float_parsing', 'loc': ('body', 'land_building_information', 'second_floor_area'), 'msg': 'Input should be a valid number, unable to parse string as a number', 'input': ''}] | body={'survey_information': {'parcel_no': 'HTTP-20260723095729-PARCEL', 'property_id': 'HTTP-20260723095729-PROP', 'survey_date': '2026-07-23T09:59:00', 'surveyor_name': 'API Test User', 'surveyor_id': 'SURV-095729', 'ward_no': '9', 'zone': 'Zone C', 'tax_rate_zone': 'TRZ-3', 'property_location': 'Kusmunda Road', 'colony_locality': 'Shiv Nagar', 'street_road_name': 'Airport Road', 'lane_no': 'L-09', 'existing_property_id': 'HTTP-20260723095729-OLD', 'digital_door_number': 'DDN-095729', 'gps_latitude': '22.3642', 'gps_longitude': '82.7011', 'unknown_frontend_field': 'ignored safely'}, 'owner_details': {'owner_name': 'Sangeeta Sahu', 'father_husband_name': 'Mahesh Sahu', 'mobile_number': '9765432109', 'alternate_mobile': '9012345678', 'aadhaar_no': '567856785678', 'email': 'sangeeta.sahu@example.com', 'correspondence_address': 'Ward 09, Korba, Chhattisgarh'}, 'occupier_details': {'occupier_name': 'Aman Khan', 'mobile_number': '9888776655', 'occupancy_status': 'Tenant', 'tenant_since': '2024-05-15'}, 'property_details': {'property_type': 'Commercial', 'property_status': 'New Construction', 'building_permission_available': 'yes', 'property_ownership': 'Government'}, 'land_building_information': {'plot_area': '220.5', 'ground_floor_area': '100', 'first_floor_area': '60', 'second_floor_area': '', 'third_floor_area': None, 'number_of_basement_levels': '2', 'basement_area_1': '20', 'basement_area_2': '15', 'floor_areas': {'1': '100', '2': {'area': '60'}}, 'basement_areas': {'1': '20', '2': '15'}, 'number_of_floors': '2', 'year_of_construction': '2023', 'total_builtup_area': '160', 'building_age': '3', 'construction_type': 'Pucca', 'roof_type': 'RCC'}, 'usage_details': {'primary_use': 'Commercial', 'mixed_use': 'true', 'commercial_activity': 'Office', 'occupancy': 'Self', 'number_of_families': '0', 'number_of_shops': '2'}, 'tax_related_information': {'existing_property_tax_no': 'HTTP-20260723095729-TAX', 'tax_paid_till': '2026-06-30', 'outstanding_tax': '2500', 'exempted_property': 'false', 'exemption_category': None}, 'utility_connections': {'water_connection_no': 'HTTP-20260723095729-WC', 'is_water_connection': 'HTTP-20260723095729-WC', 'sewer_connection': 'yes', 'is_electricity_connection': 'true', 'electricity_consumer_no': 'HTTP-20260723095729-EC', 'gas_connection': 'yes', 'gas_connection_no': 'HTTP-20260723095729-GAS', 'trade_license_no': 'HTTP-20260723095729-TL', 'factory_license_no': 'HTTP-20260723095729-FL'}, 'gis_information': {'gis_property_polygon_available': 'yes', 'property_boundary_verified': True, 'geo_tag_completed': True, 'property_photo_captured': False, 'front_elevation_photo': True, 'name_plate_photo': False, 'property_photo_base64': ['aGVsbG8='], 'front_elevation_photo_base64': [], 'name_plate_photo_base64': []}, 'smart_addressing': {'ddn_generated': 'false', 'ddn_sticker_affixed': False, 'qr_code_affixed': True, 'street_code': 'ST-09', 'building_sequence_no': '21'}, 'verification': {'unassessed_property': True, 'under_assessed_property': False, 'property_use_changed': True, 'additional_floor_constructed': False, 'boundary_changed': False, 'ownership_changed': True, 'demolished_property': False, 'new_property': False}, 'documents_collected': {'aadhaar_copy': 'Yes', 'aadhaar_copy_files': ['aGVsbG8='], 'electricity_bill_files': [], 'water_bill_files': [], 'sale_deed_files': [], 'property_tax_receipt_files': [], 'building_permission_files': [], 'other_documents_files': []}, 'surveyor_remarks': {'surveyor_remarks': 'HTTP end-to-end test.', 'supervisor_remarks': 'Passed through API route.'}}
+2026-07-23 09:57:29,643 | WARNING | korba_api | API_RESPONSE | outcome=FAILURE | method=POST | path=/survey/survey-form | status=422 | duration_ms=438.62
+2026-07-23 10:00:08,854 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=GET | path=/ | status=200 | duration_ms=1.22
+2026-07-23 10:00:09,864 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/survey/survey-form | status=200 | duration_ms=1006.85
+2026-07-23 10:02:42,077 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=GET | path=/ | status=200 | duration_ms=1.55
+2026-07-23 10:02:43,359 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/survey/survey-form | status=200 | duration_ms=1279.16
+2026-07-23 12:23:08,937 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=GET | path=/korba-services | status=307 | duration_ms=1.70
+2026-07-23 12:23:08,945 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=GET | path=/korba-services/ | status=200 | duration_ms=2.78
+2026-07-23 12:23:09,014 | ERROR | korba_api | HTTP error on GET /favicon.ico | status=404 | detail=Not Found | body=b''
+2026-07-23 12:23:09,015 | WARNING | korba_api | API_RESPONSE | outcome=FAILURE | method=GET | path=/favicon.ico | status=404 | duration_ms=1.56
+2026-07-23 12:23:14,761 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=GET | path=/korba-services/docs | status=200 | duration_ms=0.38
+2026-07-23 12:23:14,882 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=GET | path=/korba-services/openapi.json | status=200 | duration_ms=35.65
+2026-07-23 12:30:14,197 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/survey-form | status=200 | duration_ms=3419.29
+2026-07-23 15:43:09,228 | ERROR | korba_api | HTTP error on POST /korba-services/survey/all-survey-documents | status=403 | detail=Not authenticated | body=b''
+2026-07-23 15:43:09,230 | WARNING | korba_api | API_RESPONSE | outcome=FAILURE | method=POST | path=/korba-services/survey/all-survey-documents | status=403 | duration_ms=11.62
+2026-07-23 16:16:27,597 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=GET | path=/docs | status=200 | duration_ms=1.40
+2026-07-23 16:16:27,777 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=GET | path=/korba-services/openapi.json | status=200 | duration_ms=3.37
+2026-07-24 11:45:54,956 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=GET | path=/docs | status=200 | duration_ms=0.44
+2026-07-24 11:45:55,289 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=GET | path=/korba-services/openapi.json | status=200 | duration_ms=30.66
+2026-07-24 11:46:03,023 | ERROR | korba_api | HTTP error on POST /korba-services/survey/existing-property-id-list | status=403 | detail=Not authenticated | body=b''
+2026-07-24 11:46:03,023 | WARNING | korba_api | API_RESPONSE | outcome=FAILURE | method=POST | path=/korba-services/survey/existing-property-id-list | status=403 | duration_ms=1.34
+2026-07-24 11:46:23,151 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/existing-property-id-list | status=200 | duration_ms=737.16
+2026-07-24 11:49:45,873 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=GET | path=/docs | status=200 | duration_ms=0.49
+2026-07-24 11:49:46,132 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=GET | path=/korba-services/openapi.json | status=200 | duration_ms=20.80
+2026-07-24 11:49:54,991 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/survey-data-by-existing-property-id | status=200 | duration_ms=551.17
+2026-07-24 11:52:14,606 | ERROR | korba_api | Unhandled error on POST /korba-services/survey/survey-data-by-existing-property-id
+  + Exception Group Traceback (most recent call last):
+  |   File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\_utils.py", line 79, in collapse_excgroups
+  |     yield
+  |   File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\middleware\base.py", line 183, in __call__
+  |     async with anyio.create_task_group() as task_group:
+  |   File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\anyio\_backends\_asyncio.py", line 811, in __aexit__
+  |     raise BaseExceptionGroup(
+  | ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    |     await self.app(scope, receive, _send)
+    |   File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\middleware\base.py", line 182, in __call__
+    |     with recv_stream, send_stream, collapse_excgroups():
+    |   File "C:\Program Files\Python311\Lib\contextlib.py", line 155, in __exit__
+    |     self.gen.throw(typ, value, traceback)
+    |   File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\_utils.py", line 85, in collapse_excgroups
+    |     raise exc
+    |   File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\middleware\base.py", line 184, in __call__
+    |     response = await self.dispatch_func(request, call_next)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "F:\Vishal_Assignments\Korba\API\Korba\app.py", line 33, in log_response_middleware
+    |     response = await call_next(request)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\middleware\base.py", line 159, in call_next
+    |     raise app_exc
+    |   File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    |     await self.app(scope, receive_or_disconnect, send_no_error)
+    |   File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    |     await self.simple_response(scope, receive, send, request_headers=headers)
+    |   File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    |     await self.app(scope, receive, send)
+    |   File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    |     await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+    |   File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    |     raise exc
+    |   File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\routing.py", line 716, in __call__
+    |     await self.middleware_stack(scope, receive, send)
+    |   File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\routing.py", line 736, in app
+    |     await route.handle(scope, receive, send)
+    |   File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\routing.py", line 290, in handle
+    |     await self.app(scope, receive, send)
+    |   File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\routing.py", line 78, in app
+    |     await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+    |   File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    |     raise exc
+    |   File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\routing.py", line 75, in app
+    |     response = await f(request)
+    |                ^^^^^^^^^^^^^^^^
+    |   File "C:\Program Files\Python311\Lib\contextlib.py", line 222, in __aexit__
+    |     await self.gen.athrow(typ, value, traceback)
+    |   File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\fastapi\concurrency.py", line 35, in contextmanager_in_threadpool
+    |     raise e
+    |   File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\fastapi\concurrency.py", line 27, in contextmanager_in_threadpool
+    |     yield await run_in_threadpool(cm.__enter__)
+    |   File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\fastapi\routing.py", line 302, in app
+    |     raw_response = await run_endpoint_function(
+    |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\fastapi\routing.py", line 215, in run_endpoint_function
+    |     return await run_in_threadpool(dependant.call, **values)
+    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\concurrency.py", line 38, in run_in_threadpool
+    |     return await anyio.to_thread.run_sync(func)
+    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    |     return await get_async_backend().run_sync_in_worker_thread(
+    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\anyio\_backends\_asyncio.py", line 2596, in run_sync_in_worker_thread
+    |     return await future
+    |            ^^^^^^^^^^^^
+    |   File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\anyio\_backends\_asyncio.py", line 1029, in run
+    |     result = context.run(func, *args)
+    |              ^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "F:\Vishal_Assignments\Korba\API\Korba\routes\survey_service.py", line 106, in get_survey_data_by_existing_property_id
+    |     return SurveyService(db).get_survey_data_by_existing_property_id(existing_property_id)
+    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    | AttributeError: 'SurveyService' object has no attribute 'get_survey_data_by_existing_property_id'
+    +------------------------------------
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\middleware\base.py", line 182, in __call__
+    with recv_stream, send_stream, collapse_excgroups():
+  File "C:\Program Files\Python311\Lib\contextlib.py", line 155, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\_utils.py", line 85, in collapse_excgroups
+    raise exc
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\middleware\base.py", line 184, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\app.py", line 33, in log_response_middleware
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\middleware\base.py", line 159, in call_next
+    raise app_exc
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\routing.py", line 78, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\routing.py", line 75, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python311\Lib\contextlib.py", line 222, in __aexit__
+    await self.gen.athrow(typ, value, traceback)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\fastapi\concurrency.py", line 35, in contextmanager_in_threadpool
+    raise e
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\fastapi\concurrency.py", line 27, in contextmanager_in_threadpool
+    yield await run_in_threadpool(cm.__enter__)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\fastapi\routing.py", line 302, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\fastapi\routing.py", line 215, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\concurrency.py", line 38, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\anyio\_backends\_asyncio.py", line 2596, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\anyio\_backends\_asyncio.py", line 1029, in run
+    result = context.run(func, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\routes\survey_service.py", line 106, in get_survey_data_by_existing_property_id
+    return SurveyService(db).get_survey_data_by_existing_property_id(existing_property_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'SurveyService' object has no attribute 'get_survey_data_by_existing_property_id'
+2026-07-24 11:53:30,269 | ERROR | korba_api | Unhandled error on POST /korba-services/survey/survey-data-by-existing-property-id
+  + Exception Group Traceback (most recent call last):
+  |   File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\_utils.py", line 79, in collapse_excgroups
+  |     yield
+  |   File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\middleware\base.py", line 183, in __call__
+  |     async with anyio.create_task_group() as task_group:
+  |   File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\anyio\_backends\_asyncio.py", line 811, in __aexit__
+  |     raise BaseExceptionGroup(
+  | ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    |     await self.app(scope, receive, _send)
+    |   File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\middleware\base.py", line 182, in __call__
+    |     with recv_stream, send_stream, collapse_excgroups():
+    |   File "C:\Program Files\Python311\Lib\contextlib.py", line 155, in __exit__
+    |     self.gen.throw(typ, value, traceback)
+    |   File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\_utils.py", line 85, in collapse_excgroups
+    |     raise exc
+    |   File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\middleware\base.py", line 184, in __call__
+    |     response = await self.dispatch_func(request, call_next)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "F:\Vishal_Assignments\Korba\API\Korba\app.py", line 33, in log_response_middleware
+    |     response = await call_next(request)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\middleware\base.py", line 159, in call_next
+    |     raise app_exc
+    |   File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    |     await self.app(scope, receive_or_disconnect, send_no_error)
+    |   File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    |     await self.simple_response(scope, receive, send, request_headers=headers)
+    |   File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    |     await self.app(scope, receive, send)
+    |   File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    |     await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+    |   File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    |     raise exc
+    |   File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\routing.py", line 716, in __call__
+    |     await self.middleware_stack(scope, receive, send)
+    |   File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\routing.py", line 736, in app
+    |     await route.handle(scope, receive, send)
+    |   File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\routing.py", line 290, in handle
+    |     await self.app(scope, receive, send)
+    |   File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\routing.py", line 78, in app
+    |     await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+    |   File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\_exception_handler.py", line 59, in wrapped_app
+    |     response = await handler(conn, exc)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "F:\Vishal_Assignments\Korba\API\Korba\app.py", line 52, in validation_exception_handler
+    |     body = await request.body()
+    |            ^^^^^^^^^^^^^^^^^^^^
+    |   File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\requests.py", line 242, in body
+    |     async for chunk in self.stream():
+    |   File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\requests.py", line 225, in stream
+    |     raise RuntimeError("Stream consumed")
+    | RuntimeError: Stream consumed
+    +------------------------------------
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\middleware\base.py", line 182, in __call__
+    with recv_stream, send_stream, collapse_excgroups():
+  File "C:\Program Files\Python311\Lib\contextlib.py", line 155, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\_utils.py", line 85, in collapse_excgroups
+    raise exc
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\middleware\base.py", line 184, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\app.py", line 33, in log_response_middleware
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\middleware\base.py", line 159, in call_next
+    raise app_exc
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\routing.py", line 78, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\_exception_handler.py", line 59, in wrapped_app
+    response = await handler(conn, exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\app.py", line 52, in validation_exception_handler
+    body = await request.body()
+           ^^^^^^^^^^^^^^^^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\requests.py", line 242, in body
+    async for chunk in self.stream():
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\requests.py", line 225, in stream
+    raise RuntimeError("Stream consumed")
+RuntimeError: Stream consumed
+2026-07-24 11:54:19,877 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=GET | path=/docs | status=200 | duration_ms=0.57
+2026-07-24 11:54:20,126 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=GET | path=/korba-services/openapi.json | status=200 | duration_ms=19.58
+2026-07-24 11:54:27,496 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/existing-property-id-list | status=200 | duration_ms=555.01
+2026-07-24 11:54:44,753 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/survey-data-by-existing-property-id | status=200 | duration_ms=417.30
+2026-07-24 12:05:21,703 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/survey-data-by-existing-property-id | status=200 | duration_ms=1312.75
+2026-07-24 12:05:56,455 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/survey-data-by-existing-property-id | status=200 | duration_ms=606.82
+2026-07-24 12:06:13,298 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/survey-data-by-existing-property-id | status=200 | duration_ms=1368.28
+2026-07-24 12:15:33,968 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=GET | path=/korba-services/docs | status=200 | duration_ms=0.78
+2026-07-24 12:15:34,161 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=GET | path=/korba-services/openapi.json | status=200 | duration_ms=16.05
+2026-07-24 12:15:46,876 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/existing-property-id-list | status=200 | duration_ms=303.30
+2026-07-24 12:27:36,232 | ERROR | korba_api | HTTP error on GET /korba-services-dev/survey/existing-property-id-list | status=404 | detail=Not Found | body=b''
+2026-07-24 12:27:36,233 | WARNING | korba_api | API_RESPONSE | outcome=FAILURE | method=GET | path=/korba-services-dev/survey/existing-property-id-list | status=404 | duration_ms=1.02
+2026-07-24 12:27:36,661 | ERROR | korba_api | HTTP error on GET /korba-services-dev/survey/existing-property-id-list | status=404 | detail=Not Found | body=b''
+2026-07-24 12:27:36,662 | WARNING | korba_api | API_RESPONSE | outcome=FAILURE | method=GET | path=/korba-services-dev/survey/existing-property-id-list | status=404 | duration_ms=2.40
+2026-07-24 12:29:22,878 | ERROR | korba_api | HTTP error on GET /korba-services-dev/survey/existing-property-id-list | status=404 | detail=Not Found | body=b''
+2026-07-24 12:29:22,878 | WARNING | korba_api | API_RESPONSE | outcome=FAILURE | method=GET | path=/korba-services-dev/survey/existing-property-id-list | status=404 | duration_ms=1.05
+2026-07-24 12:29:23,238 | ERROR | korba_api | HTTP error on GET /korba-services-dev/survey/existing-property-id-list | status=404 | detail=Not Found | body=b''
+2026-07-24 12:29:23,239 | WARNING | korba_api | API_RESPONSE | outcome=FAILURE | method=GET | path=/korba-services-dev/survey/existing-property-id-list | status=404 | duration_ms=1.93
+2026-07-24 12:29:59,274 | ERROR | korba_api | HTTP error on GET /korba-services-dev/survey/existing-property-id-list | status=404 | detail=Not Found | body=b''
+2026-07-24 12:29:59,274 | WARNING | korba_api | API_RESPONSE | outcome=FAILURE | method=GET | path=/korba-services-dev/survey/existing-property-id-list | status=404 | duration_ms=1.01
+2026-07-24 12:29:59,640 | ERROR | korba_api | HTTP error on GET /korba-services-dev/survey/existing-property-id-list | status=404 | detail=Not Found | body=b''
+2026-07-24 12:29:59,641 | WARNING | korba_api | API_RESPONSE | outcome=FAILURE | method=GET | path=/korba-services-dev/survey/existing-property-id-list | status=404 | duration_ms=0.95
+2026-07-24 12:30:16,890 | ERROR | korba_api | HTTP error on GET /korba-services-dev/survey/existing-property-id-list | status=404 | detail=Not Found | body=b''
+2026-07-24 12:30:16,891 | WARNING | korba_api | API_RESPONSE | outcome=FAILURE | method=GET | path=/korba-services-dev/survey/existing-property-id-list | status=404 | duration_ms=0.95
+2026-07-24 12:30:17,241 | ERROR | korba_api | HTTP error on GET /korba-services-dev/survey/existing-property-id-list | status=404 | detail=Not Found | body=b''
+2026-07-24 12:30:17,242 | WARNING | korba_api | API_RESPONSE | outcome=FAILURE | method=GET | path=/korba-services-dev/survey/existing-property-id-list | status=404 | duration_ms=1.10
+2026-07-24 12:32:54,114 | ERROR | korba_api | HTTP error on POST /korba-services-dev/survey/existing-property-id-list | status=404 | detail=Not Found | body=b''
+2026-07-24 12:32:54,114 | WARNING | korba_api | API_RESPONSE | outcome=FAILURE | method=POST | path=/korba-services-dev/survey/existing-property-id-list | status=404 | duration_ms=1.05
+2026-07-24 12:35:55,964 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/existing-property-id-list | status=200 | duration_ms=223.97
+2026-07-24 12:35:56,446 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/existing-property-id-list | status=200 | duration_ms=187.53
+2026-07-24 12:39:53,986 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/existing-property-id-list | status=200 | duration_ms=187.73
+2026-07-24 12:40:58,994 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/existing-property-id-list | status=200 | duration_ms=188.66
+2026-07-24 12:41:22,860 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/existing-property-id-list | status=200 | duration_ms=188.62
+2026-07-24 12:41:23,230 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/existing-property-id-list | status=200 | duration_ms=187.22
+2026-07-24 12:42:34,856 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/existing-property-id-list | status=200 | duration_ms=187.02
+2026-07-24 12:43:06,604 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/existing-property-id-list | status=200 | duration_ms=187.40
+2026-07-24 12:43:10,392 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/existing-property-id-list | status=200 | duration_ms=186.63
+2026-07-24 12:43:29,954 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/existing-property-id-list | status=200 | duration_ms=186.67
+2026-07-24 12:43:30,247 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/existing-property-id-list | status=200 | duration_ms=151.51
+2026-07-24 12:43:57,982 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/existing-property-id-list | status=200 | duration_ms=188.04
+2026-07-24 12:44:10,231 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/existing-property-id-list | status=200 | duration_ms=187.41
+2026-07-24 12:44:14,425 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/existing-property-id-list | status=200 | duration_ms=186.97
+2026-07-24 12:47:14,091 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/existing-property-id-list | status=200 | duration_ms=188.02
+2026-07-24 12:47:18,985 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/existing-property-id-list | status=200 | duration_ms=645.34
+2026-07-24 12:49:31,192 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/survey-data-by-existing-property-id | status=200 | duration_ms=1273.86
+2026-07-24 12:49:48,648 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/survey-data-by-existing-property-id | status=200 | duration_ms=593.65
+2026-07-24 12:50:00,158 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/survey-data-by-existing-property-id | status=200 | duration_ms=594.83
+2026-07-24 12:55:25,022 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/survey-form | status=200 | duration_ms=2257.45
+2026-07-24 13:18:17,247 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/existing-property-id-list | status=200 | duration_ms=1079.13
+2026-07-24 13:18:56,324 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/existing-property-id-list | status=200 | duration_ms=133.41
+2026-07-24 13:19:28,810 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/existing-property-id-list | status=200 | duration_ms=657.43
+2026-07-24 13:19:28,831 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/existing-property-id-list | status=200 | duration_ms=335.85
+2026-07-24 13:20:18,367 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/existing-property-id-list | status=200 | duration_ms=161.75
+2026-07-24 13:20:18,707 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/existing-property-id-list | status=200 | duration_ms=156.00
+2026-07-24 13:20:35,882 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/existing-property-id-list | status=200 | duration_ms=154.77
+2026-07-24 13:20:39,352 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/existing-property-id-list | status=200 | duration_ms=155.31
+2026-07-24 13:20:42,464 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/existing-property-id-list | status=200 | duration_ms=181.00
+2026-07-24 13:21:31,192 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/survey-form | status=200 | duration_ms=1172.17
+2026-07-24 14:06:49,798 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/survey-form | status=200 | duration_ms=1495.93
+2026-07-24 14:10:50,060 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/survey-form | status=200 | duration_ms=1431.76
+2026-07-24 14:14:28,335 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/survey-form | status=200 | duration_ms=904.53
+2026-07-24 14:16:50,235 | ERROR | korba_api | Unhandled error on POST /korba-services/survey/survey-form
+Traceback (most recent call last):
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\sqlalchemy\engine\base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\sqlalchemy\engine\default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.UniqueViolation: duplicate key value violates unique constraint "tax_related_information_existing_property_tax_no_key"
+DETAIL:  Key (existing_property_tax_no)=(fgdfg45546) already exists.
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\middleware\base.py", line 182, in __call__
+    with recv_stream, send_stream, collapse_excgroups():
+  File "C:\Program Files\Python311\Lib\contextlib.py", line 155, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\_utils.py", line 85, in collapse_excgroups
+    raise exc
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\middleware\base.py", line 184, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\app.py", line 33, in log_response_middleware
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\middleware\base.py", line 159, in call_next
+    raise app_exc
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\routing.py", line 78, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\routing.py", line 75, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python311\Lib\contextlib.py", line 222, in __aexit__
+    await self.gen.athrow(typ, value, traceback)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\fastapi\concurrency.py", line 35, in contextmanager_in_threadpool
+    raise e
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\fastapi\concurrency.py", line 27, in contextmanager_in_threadpool
+    yield await run_in_threadpool(cm.__enter__)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\fastapi\routing.py", line 302, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\fastapi\routing.py", line 215, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\concurrency.py", line 38, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\anyio\_backends\_asyncio.py", line 2596, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\anyio\_backends\_asyncio.py", line 1029, in run
+    result = context.run(func, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\routes\survey_service.py", line 26, in create_survey
+    return SurveyService(db).save_complete_survey(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\services\survey_service.py", line 544, in save_complete_survey
+    self.db.commit()
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\sqlalchemy\orm\session.py", line 2035, in commit
+    trans.commit(_to_root=True)
+  File "<string>", line 2, in commit
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\sqlalchemy\orm\session.py", line 1316, in commit
+    self._prepare_impl()
+  File "<string>", line 2, in _prepare_impl
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\sqlalchemy\orm\session.py", line 1290, in _prepare_impl
+    self.session.flush()
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\sqlalchemy\orm\session.py", line 4353, in flush
+    self._flush(objects)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\sqlalchemy\orm\session.py", line 4488, in _flush
+    with util.safe_reraise():
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 122, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\sqlalchemy\orm\session.py", line 4449, in _flush
+    flush_context.execute()
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\sqlalchemy\orm\unitofwork.py", line 465, in execute
+    rec.execute(self)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\sqlalchemy\orm\unitofwork.py", line 641, in execute
+    util.preloaded.orm_persistence.save_obj(
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\sqlalchemy\orm\persistence.py", line 94, in save_obj
+    _emit_insert_statements(
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\sqlalchemy\orm\persistence.py", line 1234, in _emit_insert_statements
+    result = connection.execute(
+             ^^^^^^^^^^^^^^^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\sqlalchemy\engine\base.py", line 1421, in execute
+    return meth(
+           ^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\sqlalchemy\sql\elements.py", line 526, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\sqlalchemy\engine\base.py", line 1643, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\sqlalchemy\engine\base.py", line 1848, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\sqlalchemy\engine\base.py", line 1988, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\sqlalchemy\engine\base.py", line 2365, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\sqlalchemy\engine\base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\sqlalchemy\engine\default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.IntegrityError: (psycopg2.errors.UniqueViolation) duplicate key value violates unique constraint "tax_related_information_existing_property_tax_no_key"
+DETAIL:  Key (existing_property_tax_no)=(fgdfg45546) already exists.
+
+[SQL: INSERT INTO propertytax.tax_related_information (property_uid, existing_property_tax_no, tax_paid_till, outstanding_tax, exempted_property, exemption_category, created_at, updated_at) VALUES (%(property_uid)s, %(existing_property_tax_no)s, %(tax_paid_till)s, %(outstanding_tax)s, %(exempted_property)s, %(exemption_category)s, %(created_at)s, %(updated_at)s) RETURNING propertytax.tax_related_information.id]
+[parameters: {'property_uid': 'vishd12345234', 'existing_property_tax_no': 'fgdfg45546', 'tax_paid_till': datetime.date(2026, 7, 21), 'outstanding_tax': 1524.0, 'exempted_property': False, 'exemption_category': None, 'created_at': datetime.datetime(2026, 7, 24, 8, 46, 50, 161622), 'updated_at': datetime.datetime(2026, 7, 24, 8, 46, 50, 161622)}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2026-07-24 14:17:31,719 | ERROR | korba_api | Unhandled error on POST /korba-services/survey/survey-form
+Traceback (most recent call last):
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\sqlalchemy\engine\base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\sqlalchemy\engine\default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.UniqueViolation: duplicate key value violates unique constraint "utility_connections_water_connection_no_key"
+DETAIL:  Key (water_connection_no)=(dfgdfgf544) already exists.
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\middleware\base.py", line 182, in __call__
+    with recv_stream, send_stream, collapse_excgroups():
+  File "C:\Program Files\Python311\Lib\contextlib.py", line 155, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\_utils.py", line 85, in collapse_excgroups
+    raise exc
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\middleware\base.py", line 184, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\app.py", line 33, in log_response_middleware
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\middleware\base.py", line 159, in call_next
+    raise app_exc
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\routing.py", line 78, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\routing.py", line 75, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python311\Lib\contextlib.py", line 222, in __aexit__
+    await self.gen.athrow(typ, value, traceback)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\fastapi\concurrency.py", line 35, in contextmanager_in_threadpool
+    raise e
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\fastapi\concurrency.py", line 27, in contextmanager_in_threadpool
+    yield await run_in_threadpool(cm.__enter__)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\fastapi\routing.py", line 302, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\fastapi\routing.py", line 215, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\concurrency.py", line 38, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\anyio\_backends\_asyncio.py", line 2596, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\anyio\_backends\_asyncio.py", line 1029, in run
+    result = context.run(func, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\routes\survey_service.py", line 26, in create_survey
+    return SurveyService(db).save_complete_survey(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\services\survey_service.py", line 544, in save_complete_survey
+    self.db.commit()
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\sqlalchemy\orm\session.py", line 2035, in commit
+    trans.commit(_to_root=True)
+  File "<string>", line 2, in commit
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\sqlalchemy\orm\session.py", line 1316, in commit
+    self._prepare_impl()
+  File "<string>", line 2, in _prepare_impl
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\sqlalchemy\orm\session.py", line 1290, in _prepare_impl
+    self.session.flush()
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\sqlalchemy\orm\session.py", line 4353, in flush
+    self._flush(objects)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\sqlalchemy\orm\session.py", line 4488, in _flush
+    with util.safe_reraise():
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 122, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\sqlalchemy\orm\session.py", line 4449, in _flush
+    flush_context.execute()
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\sqlalchemy\orm\unitofwork.py", line 465, in execute
+    rec.execute(self)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\sqlalchemy\orm\unitofwork.py", line 641, in execute
+    util.preloaded.orm_persistence.save_obj(
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\sqlalchemy\orm\persistence.py", line 94, in save_obj
+    _emit_insert_statements(
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\sqlalchemy\orm\persistence.py", line 1234, in _emit_insert_statements
+    result = connection.execute(
+             ^^^^^^^^^^^^^^^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\sqlalchemy\engine\base.py", line 1421, in execute
+    return meth(
+           ^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\sqlalchemy\sql\elements.py", line 526, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\sqlalchemy\engine\base.py", line 1643, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\sqlalchemy\engine\base.py", line 1848, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\sqlalchemy\engine\base.py", line 1988, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\sqlalchemy\engine\base.py", line 2365, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\sqlalchemy\engine\base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\sqlalchemy\engine\default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.IntegrityError: (psycopg2.errors.UniqueViolation) duplicate key value violates unique constraint "utility_connections_water_connection_no_key"
+DETAIL:  Key (water_connection_no)=(dfgdfgf544) already exists.
+
+[SQL: INSERT INTO propertytax.utility_connections (property_uid, water_connection_no, is_water_connection, sewer_connection, is_electricity_connection, electricity_consumer_no, gas_connection, gas_connection_no, trade_license_no, factory_license_no, created_at, updated_at) VALUES (%(property_uid)s, %(water_connection_no)s, %(is_water_connection)s, %(sewer_connection)s, %(is_electricity_connection)s, %(electricity_consumer_no)s, %(gas_connection)s, %(gas_connection_no)s, %(trade_license_no)s, %(factory_license_no)s, %(created_at)s, %(updated_at)s) RETURNING propertytax.utility_connections.id]
+[parameters: {'property_uid': 'vishd12345234', 'water_connection_no': 'dfgdfgf544', 'is_water_connection': None, 'sewer_connection': True, 'is_electricity_connection': None, 'electricity_consumer_no': 'fghfgh65656', 'gas_connection': True, 'gas_connection_no': None, 'trade_license_no': None, 'factory_license_no': None, 'created_at': datetime.datetime(2026, 7, 24, 8, 47, 31, 645718), 'updated_at': datetime.datetime(2026, 7, 24, 8, 47, 31, 645718)}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2026-07-24 14:17:55,669 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/survey-form | status=200 | duration_ms=1801.69
+2026-07-24 14:23:09,928 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/existing-property-id-list | status=200 | duration_ms=721.99
+2026-07-24 14:23:29,038 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/survey-data-by-existing-property-id | status=200 | duration_ms=541.12
+2026-07-24 14:28:40,333 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/existing-property-id-list | status=200 | duration_ms=187.83
+2026-07-24 14:28:40,609 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/existing-property-id-list | status=200 | duration_ms=125.70
+2026-07-24 14:35:16,259 | ERROR | korba_api | 422 validation error on POST /korba-services/survey/survey-data-by-existing-property-id | errors=[{'type': 'missing', 'loc': ('body', 'existing_property_ids'), 'msg': 'Field required', 'input': None}] | body={'existing_property_ids': 125351}
+2026-07-24 14:35:16,260 | WARNING | korba_api | API_RESPONSE | outcome=FAILURE | method=POST | path=/korba-services/survey/survey-data-by-existing-property-id | status=422 | duration_ms=3.80
+2026-07-24 14:35:50,031 | ERROR | korba_api | 422 validation error on POST /korba-services/survey/survey-data-by-existing-property-id | errors=[{'type': 'missing', 'loc': ('body', 'existing_property_ids'), 'msg': 'Field required', 'input': None}] | body={'existing_property_ids': '125351'}
+2026-07-24 14:35:50,031 | WARNING | korba_api | API_RESPONSE | outcome=FAILURE | method=POST | path=/korba-services/survey/survey-data-by-existing-property-id | status=422 | duration_ms=1.98
+2026-07-24 14:36:06,427 | ERROR | korba_api | 422 validation error on POST /korba-services/survey/survey-data-by-existing-property-id | errors=[{'type': 'missing', 'loc': ('body', 'existing_property_ids'), 'msg': 'Field required', 'input': None}] | body={'existing_property_ids': '125351'}
+2026-07-24 14:36:06,428 | WARNING | korba_api | API_RESPONSE | outcome=FAILURE | method=POST | path=/korba-services/survey/survey-data-by-existing-property-id | status=422 | duration_ms=2.00
+2026-07-24 14:37:49,856 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/survey-data-by-existing-property-id | status=200 | duration_ms=972.05
+2026-07-24 14:39:24,871 | ERROR | korba_api | 422 validation error on POST /korba-services/survey/survey-data-by-existing-property-id | errors=[{'type': 'missing', 'loc': ('body', 'existing_property_ids'), 'msg': 'Field required', 'input': None}] | body=b'{\r\n    [\r\n     "existing_property_ids=125351"\r\n]\r\n}'
+2026-07-24 14:39:24,871 | WARNING | korba_api | API_RESPONSE | outcome=FAILURE | method=POST | path=/korba-services/survey/survey-data-by-existing-property-id | status=422 | duration_ms=3.41
+2026-07-24 14:39:35,758 | ERROR | korba_api | 422 validation error on POST /korba-services/survey/survey-data-by-existing-property-id | errors=[{'type': 'missing', 'loc': ('body', 'existing_property_ids'), 'msg': 'Field required', 'input': None}] | body=b'{\r\n    [\r\n     "existing_property_ids=125351"\r\n]\r\n}'
+2026-07-24 14:39:35,760 | WARNING | korba_api | API_RESPONSE | outcome=FAILURE | method=POST | path=/korba-services/survey/survey-data-by-existing-property-id | status=422 | duration_ms=3.44
+2026-07-24 14:40:05,012 | ERROR | korba_api | 422 validation error on POST /korba-services/survey/survey-data-by-existing-property-id | errors=[{'type': 'missing', 'loc': ('body', 'existing_property_ids'), 'msg': 'Field required', 'input': None}] | body={'existing_property_ids': '125351'}
+2026-07-24 14:40:05,012 | WARNING | korba_api | API_RESPONSE | outcome=FAILURE | method=POST | path=/korba-services/survey/survey-data-by-existing-property-id | status=422 | duration_ms=4.82
+2026-07-24 14:42:27,986 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/existing-property-id-list | status=200 | duration_ms=721.28
+2026-07-24 14:43:55,860 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/survey-data-by-existing-property-id | status=200 | duration_ms=552.97
+2026-07-24 14:44:28,803 | ERROR | korba_api | 422 validation error on POST /korba-services/survey/survey-data-by-existing-property-id | errors=[{'type': 'missing', 'loc': ('body', 'existing_property_ids'), 'msg': 'Field required', 'input': None}] | body=b'"existing_property_ids"="125228"'
+2026-07-24 14:44:28,803 | WARNING | korba_api | API_RESPONSE | outcome=FAILURE | method=POST | path=/korba-services/survey/survey-data-by-existing-property-id | status=422 | duration_ms=2.04
+2026-07-24 14:47:14,334 | ERROR | korba_api | 422 validation error on POST /korba-services/survey/survey-data-by-existing-property-id | errors=[{'type': 'missing', 'loc': ('body', 'request'), 'msg': 'Field required', 'input': None}] | body={'existing_property_ids': '125228'}
+2026-07-24 14:47:14,382 | WARNING | korba_api | API_RESPONSE | outcome=FAILURE | method=POST | path=/korba-services/survey/survey-data-by-existing-property-id | status=422 | duration_ms=198.43
+2026-07-24 14:47:57,693 | ERROR | korba_api | Unhandled error on POST /korba-services/survey/survey-data-by-existing-property-id
+Traceback (most recent call last):
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\middleware\base.py", line 182, in __call__
+    with recv_stream, send_stream, collapse_excgroups():
+  File "C:\Program Files\Python311\Lib\contextlib.py", line 155, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\_utils.py", line 85, in collapse_excgroups
+    raise exc
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\middleware\base.py", line 184, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\app.py", line 33, in log_response_middleware
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\middleware\base.py", line 159, in call_next
+    raise app_exc
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\middleware\cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\routing.py", line 78, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\routing.py", line 75, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python311\Lib\contextlib.py", line 222, in __aexit__
+    await self.gen.athrow(typ, value, traceback)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\fastapi\concurrency.py", line 35, in contextmanager_in_threadpool
+    raise e
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\fastapi\concurrency.py", line 27, in contextmanager_in_threadpool
+    yield await run_in_threadpool(cm.__enter__)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\fastapi\routing.py", line 302, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\fastapi\routing.py", line 215, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\concurrency.py", line 38, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\anyio\_backends\_asyncio.py", line 2596, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\anyio\_backends\_asyncio.py", line 1029, in run
+    result = context.run(func, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\routes\survey_service.py", line 117, in get_survey_data_by_existing_property_id
+    return SurveyService(db).get_survey_data_by_existing_property_id(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\services\survey_service.py", line 867, in get_survey_data_by_existing_property_id
+    raise e
+  File "F:\Vishal_Assignments\Korba\API\Korba\services\survey_service.py", line 843, in get_survey_data_by_existing_property_id
+    ParcelMaster.property_id.in_(property_ids),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\sqlalchemy\sql\operators.py", line 943, in in_
+    return self.operate(in_op, other)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\sqlalchemy\orm\attributes.py", line 453, in operate
+    return op(self.comparator, *other, **kwargs)  # type: ignore[no-any-return]  # noqa: E501
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\sqlalchemy\sql\operators.py", line 2146, in in_op
+    return a.in_(b)
+           ^^^^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\sqlalchemy\sql\operators.py", line 943, in in_
+    return self.operate(in_op, other)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\sqlalchemy\orm\properties.py", line 479, in operate
+    return op(self.__clause_element__(), *other, **kwargs)  # type: ignore[no-any-return]  # noqa: E501
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\sqlalchemy\sql\operators.py", line 2146, in in_op
+    return a.in_(b)
+           ^^^^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\sqlalchemy\sql\operators.py", line 943, in in_
+    return self.operate(in_op, other)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\sqlalchemy\sql\elements.py", line 1534, in operate
+    return op(self.comparator, *other, **kwargs)  # type: ignore[no-any-return]  # noqa: E501
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\sqlalchemy\sql\operators.py", line 2146, in in_op
+    return a.in_(b)
+           ^^^^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\sqlalchemy\sql\operators.py", line 943, in in_
+    return self.operate(in_op, other)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\sqlalchemy\sql\type_api.py", line 210, in operate
+    return op_fn(self.expr, op, *other, **addtl_kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\sqlalchemy\sql\default_comparator.py", line 218, in _in_impl
+    seq_or_selectable = coercions.expect(
+                        ^^^^^^^^^^^^^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\sqlalchemy\sql\coercions.py", line 396, in expect
+    resolved = impl._literal_coercion(
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\sqlalchemy\sql\coercions.py", line 879, in _literal_coercion
+    self._raise_for_expected(element, **kw)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\sqlalchemy\sql\coercions.py", line 519, in _raise_for_expected
+    raise exc.ArgumentError(msg, code=code) from err
+sqlalchemy.exc.ArgumentError: IN expression list, SELECT construct, or bound parameter object expected, got '125228'.
+2026-07-24 14:48:45,944 | ERROR | korba_api | 422 validation error on POST /korba-services/survey/survey-data-by-existing-property-id | errors=[{'type': 'json_invalid', 'loc': ('body', 27), 'msg': 'JSON decode error', 'input': {}, 'ctx': {'error': "Expecting ',' delimiter"}}] | body=b'{"existing_property_ids":[]"125228"]}'
+2026-07-24 14:48:45,944 | WARNING | korba_api | API_RESPONSE | outcome=FAILURE | method=POST | path=/korba-services/survey/survey-data-by-existing-property-id | status=422 | duration_ms=1.26
+2026-07-24 14:48:56,813 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/survey-data-by-existing-property-id | status=200 | duration_ms=937.86
+2026-07-24 14:49:33,252 | ERROR | korba_api | Unhandled error on POST /korba-services/survey/survey-data-by-existing-property-id
+Traceback (most recent call last):
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\middleware\base.py", line 182, in __call__
+    with recv_stream, send_stream, collapse_excgroups():
+  File "C:\Program Files\Python311\Lib\contextlib.py", line 155, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\_utils.py", line 85, in collapse_excgroups
+    raise exc
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\middleware\base.py", line 184, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\app.py", line 33, in log_response_middleware
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\middleware\base.py", line 159, in call_next
+    raise app_exc
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\middleware\cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\routing.py", line 78, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\routing.py", line 75, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python311\Lib\contextlib.py", line 222, in __aexit__
+    await self.gen.athrow(typ, value, traceback)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\fastapi\concurrency.py", line 35, in contextmanager_in_threadpool
+    raise e
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\fastapi\concurrency.py", line 27, in contextmanager_in_threadpool
+    yield await run_in_threadpool(cm.__enter__)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\fastapi\routing.py", line 302, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\fastapi\routing.py", line 215, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\concurrency.py", line 38, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\anyio\_backends\_asyncio.py", line 2596, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\anyio\_backends\_asyncio.py", line 1029, in run
+    result = context.run(func, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\routes\survey_service.py", line 117, in get_survey_data_by_existing_property_id
+    return SurveyService(db).get_survey_data_by_existing_property_id(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\services\survey_service.py", line 867, in get_survey_data_by_existing_property_id
+    raise e
+  File "F:\Vishal_Assignments\Korba\API\Korba\services\survey_service.py", line 843, in get_survey_data_by_existing_property_id
+    ParcelMaster.property_id.in_(property_ids),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\sqlalchemy\sql\operators.py", line 943, in in_
+    return self.operate(in_op, other)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\sqlalchemy\orm\attributes.py", line 453, in operate
+    return op(self.comparator, *other, **kwargs)  # type: ignore[no-any-return]  # noqa: E501
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\sqlalchemy\sql\operators.py", line 2146, in in_op
+    return a.in_(b)
+           ^^^^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\sqlalchemy\sql\operators.py", line 943, in in_
+    return self.operate(in_op, other)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\sqlalchemy\orm\properties.py", line 479, in operate
+    return op(self.__clause_element__(), *other, **kwargs)  # type: ignore[no-any-return]  # noqa: E501
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\sqlalchemy\sql\operators.py", line 2146, in in_op
+    return a.in_(b)
+           ^^^^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\sqlalchemy\sql\operators.py", line 943, in in_
+    return self.operate(in_op, other)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\sqlalchemy\sql\elements.py", line 1534, in operate
+    return op(self.comparator, *other, **kwargs)  # type: ignore[no-any-return]  # noqa: E501
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\sqlalchemy\sql\operators.py", line 2146, in in_op
+    return a.in_(b)
+           ^^^^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\sqlalchemy\sql\operators.py", line 943, in in_
+    return self.operate(in_op, other)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\sqlalchemy\sql\type_api.py", line 210, in operate
+    return op_fn(self.expr, op, *other, **addtl_kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\sqlalchemy\sql\default_comparator.py", line 218, in _in_impl
+    seq_or_selectable = coercions.expect(
+                        ^^^^^^^^^^^^^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\sqlalchemy\sql\coercions.py", line 396, in expect
+    resolved = impl._literal_coercion(
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\sqlalchemy\sql\coercions.py", line 879, in _literal_coercion
+    self._raise_for_expected(element, **kw)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\sqlalchemy\sql\coercions.py", line 519, in _raise_for_expected
+    raise exc.ArgumentError(msg, code=code) from err
+sqlalchemy.exc.ArgumentError: IN expression list, SELECT construct, or bound parameter object expected, got '125228'.
+2026-07-24 14:51:54,474 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/survey-data-by-existing-property-id | status=200 | duration_ms=1016.51
+2026-07-24 15:09:26,884 | ERROR | korba_api | HTTP error on POST /korba-services/property/get-existing-property | status=404 | detail=Not Found | body={'existingPropertyId': '1'}
+2026-07-24 15:09:26,885 | WARNING | korba_api | API_RESPONSE | outcome=FAILURE | method=POST | path=/korba-services/property/get-existing-property | status=404 | duration_ms=1.47
+2026-07-24 15:13:38,716 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/survey-data-by-existing-property-id | status=200 | duration_ms=924.30
+2026-07-24 15:14:14,640 | ERROR | korba_api | HTTP error on POST /korba-services/property/get-existing-property | status=404 | detail=Not Found | body={'existingPropertyId': '12'}
+2026-07-24 15:14:14,641 | WARNING | korba_api | API_RESPONSE | outcome=FAILURE | method=POST | path=/korba-services/property/get-existing-property | status=404 | duration_ms=1.42
+2026-07-24 15:15:42,048 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/survey-data-by-existing-property-id | status=200 | duration_ms=3.92
+2026-07-24 15:20:13,331 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=GET | path=/docs | status=200 | duration_ms=0.52
+2026-07-24 15:20:13,602 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=GET | path=/korba-services/openapi.json | status=200 | duration_ms=19.81
+2026-07-24 15:20:29,798 | ERROR | korba_api | HTTP error on POST /korba-services/survey/survey-form-submit | status=422 | detail=survey_information is required. | body=b''
+2026-07-24 15:20:29,815 | WARNING | korba_api | API_RESPONSE | outcome=FAILURE | method=POST | path=/korba-services/survey/survey-form-submit | status=422 | duration_ms=23.44
+2026-07-24 15:21:02,006 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=GET | path=/docs | status=200 | duration_ms=0.78
+2026-07-24 15:21:02,211 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=GET | path=/korba-services/openapi.json | status=200 | duration_ms=19.06
+2026-07-24 15:21:23,485 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/survey-form | status=200 | duration_ms=1846.49
+2026-07-24 15:22:09,092 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=GET | path=/docs | status=200 | duration_ms=0.33
+2026-07-24 15:22:09,310 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=GET | path=/korba-services/openapi.json | status=200 | duration_ms=0.58
+2026-07-24 15:25:52,463 | ERROR | korba_api | HTTP error on POST /korba-services/survey/survey-form-submit | status=422 | detail=survey_information is required. | body=b''
+2026-07-24 15:25:52,463 | WARNING | korba_api | API_RESPONSE | outcome=FAILURE | method=POST | path=/korba-services/survey/survey-form-submit | status=422 | duration_ms=3.01
+2026-07-24 15:26:08,168 | ERROR | korba_api | Unhandled error on POST /korba-services/survey/survey-form-submit
+  + Exception Group Traceback (most recent call last):
+  |   File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\_utils.py", line 79, in collapse_excgroups
+  |     yield
+  |   File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\middleware\base.py", line 183, in __call__
+  |     async with anyio.create_task_group() as task_group:
+  |   File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\anyio\_backends\_asyncio.py", line 811, in __aexit__
+  |     raise BaseExceptionGroup(
+  | ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    |     await self.app(scope, receive, _send)
+    |   File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\middleware\base.py", line 182, in __call__
+    |     with recv_stream, send_stream, collapse_excgroups():
+    |   File "C:\Program Files\Python311\Lib\contextlib.py", line 155, in __exit__
+    |     self.gen.throw(typ, value, traceback)
+    |   File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\_utils.py", line 85, in collapse_excgroups
+    |     raise exc
+    |   File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\middleware\base.py", line 184, in __call__
+    |     response = await self.dispatch_func(request, call_next)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "F:\Vishal_Assignments\Korba\API\Korba\app.py", line 33, in log_response_middleware
+    |     response = await call_next(request)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\middleware\base.py", line 159, in call_next
+    |     raise app_exc
+    |   File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    |     await self.app(scope, receive_or_disconnect, send_no_error)
+    |   File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\middleware\cors.py", line 85, in __call__
+    |     await self.app(scope, receive, send)
+    |   File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    |     await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+    |   File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    |     raise exc
+    |   File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\routing.py", line 716, in __call__
+    |     await self.middleware_stack(scope, receive, send)
+    |   File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\routing.py", line 736, in app
+    |     await route.handle(scope, receive, send)
+    |   File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\routing.py", line 290, in handle
+    |     await self.app(scope, receive, send)
+    |   File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\routing.py", line 78, in app
+    |     await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+    |   File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\_exception_handler.py", line 59, in wrapped_app
+    |     response = await handler(conn, exc)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "F:\Vishal_Assignments\Korba\API\Korba\app.py", line 73, in http_exception_handler
+    |     body = await request.body()
+    |            ^^^^^^^^^^^^^^^^^^^^
+    |   File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\requests.py", line 242, in body
+    |     async for chunk in self.stream():
+    |   File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\requests.py", line 225, in stream
+    |     raise RuntimeError("Stream consumed")
+    | RuntimeError: Stream consumed
+    +------------------------------------
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\middleware\base.py", line 182, in __call__
+    with recv_stream, send_stream, collapse_excgroups():
+  File "C:\Program Files\Python311\Lib\contextlib.py", line 155, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\_utils.py", line 85, in collapse_excgroups
+    raise exc
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\middleware\base.py", line 184, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\app.py", line 33, in log_response_middleware
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\middleware\base.py", line 159, in call_next
+    raise app_exc
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\middleware\cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\routing.py", line 78, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\_exception_handler.py", line 59, in wrapped_app
+    response = await handler(conn, exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\app.py", line 73, in http_exception_handler
+    body = await request.body()
+           ^^^^^^^^^^^^^^^^^^^^
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\requests.py", line 242, in body
+    async for chunk in self.stream():
+  File "F:\Vishal_Assignments\Korba\API\Korba\py-env\Lib\site-packages\starlette\requests.py", line 225, in stream
+    raise RuntimeError("Stream consumed")
+RuntimeError: Stream consumed
+2026-07-24 15:27:30,405 | ERROR | korba_api | HTTP error on POST /korba-services/survey/survey-form-submit | status=422 | detail=survey_information is required. | body=<multipart/form-data; boundary=--------------------------190015598094285365062363>
+2026-07-24 15:27:30,406 | WARNING | korba_api | API_RESPONSE | outcome=FAILURE | method=POST | path=/korba-services/survey/survey-form-submit | status=422 | duration_ms=5.85
+2026-07-24 15:28:57,619 | ERROR | korba_api | HTTP error on POST /korba-services/survey/survey-form-submit | status=422 | detail=survey_information is required. | body=<multipart/form-data; boundary=--------------------------976791166346542273019552>
+2026-07-24 15:28:57,620 | WARNING | korba_api | API_RESPONSE | outcome=FAILURE | method=POST | path=/korba-services/survey/survey-form-submit | status=422 | duration_ms=73.47
+2026-07-24 15:29:08,798 | ERROR | korba_api | HTTP error on POST /korba-services/survey/survey-form-submit | status=422 | detail=survey_information is required. | body=<multipart/form-data; boundary=--------------------------334207757421579041532424>
+2026-07-24 15:29:08,799 | WARNING | korba_api | API_RESPONSE | outcome=FAILURE | method=POST | path=/korba-services/survey/survey-form-submit | status=422 | duration_ms=73.59
+2026-07-24 15:31:03,949 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/existing-property-id-list | status=200 | duration_ms=551.44
+2026-07-24 15:31:04,094 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/existing-property-id-list | status=200 | duration_ms=323.22
+2026-07-24 15:31:04,786 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/survey-data-by-existing-property-id | status=200 | duration_ms=1.72
+2026-07-24 15:31:09,898 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/survey-data-by-existing-property-id | status=200 | duration_ms=1.68
+2026-07-24 15:31:09,905 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/survey-data-by-existing-property-id | status=200 | duration_ms=1.61
+2026-07-24 15:31:15,840 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/survey-data-by-existing-property-id | status=200 | duration_ms=3.03
+2026-07-24 15:31:15,841 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/survey-data-by-existing-property-id | status=200 | duration_ms=4.66
+2026-07-24 15:31:35,674 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/survey-data-by-existing-property-id | status=200 | duration_ms=3.60
+2026-07-24 15:31:35,676 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/survey-data-by-existing-property-id | status=200 | duration_ms=4.52
+2026-07-24 15:31:42,216 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/survey-form-submit | status=200 | duration_ms=230.50
+2026-07-24 15:32:00,223 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/existing-property-id-list | status=200 | duration_ms=133.42
+2026-07-24 15:32:01,105 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/survey-data-by-existing-property-id | status=200 | duration_ms=1.62
+2026-07-24 15:32:01,116 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/survey-data-by-existing-property-id | status=200 | duration_ms=1.77
+2026-07-24 15:33:27,211 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/existing-property-id-list | status=200 | duration_ms=164.55
+2026-07-24 15:34:59,912 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/existing-property-id-list | status=200 | duration_ms=133.74
+2026-07-24 15:35:01,699 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/existing-property-id-list | status=200 | duration_ms=132.69
+2026-07-24 15:35:09,835 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/survey-data-by-existing-property-id | status=200 | duration_ms=1.73
+2026-07-24 15:35:53,286 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/survey-data-by-existing-property-id | status=200 | duration_ms=1.92
+2026-07-24 15:35:53,289 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/survey-data-by-existing-property-id | status=200 | duration_ms=1.56
+2026-07-24 15:36:03,437 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/survey-data-by-existing-property-id | status=200 | duration_ms=3.37
+2026-07-24 15:36:03,440 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/survey-data-by-existing-property-id | status=200 | duration_ms=3.59
+2026-07-24 15:37:02,813 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/existing-property-id-list | status=200 | duration_ms=132.71
+2026-07-24 15:37:19,869 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/existing-property-id-list | status=200 | duration_ms=132.15
+2026-07-24 15:37:21,862 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/existing-property-id-list | status=200 | duration_ms=132.79
+2026-07-24 15:37:34,763 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/survey-data-by-existing-property-id | status=200 | duration_ms=1.72
+2026-07-24 15:38:12,171 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/survey-form-submit | status=200 | duration_ms=796.73
+2026-07-24 15:39:55,718 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/existing-property-id-list | status=200 | duration_ms=134.09
+2026-07-24 15:39:58,214 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/existing-property-id-list | status=200 | duration_ms=132.86
+2026-07-24 15:40:02,664 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/survey-data-by-existing-property-id | status=200 | duration_ms=2.46
+2026-07-24 15:43:18,824 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/auth/login | status=200 | duration_ms=1236.35
+2026-07-24 15:44:11,337 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/existing-property-id-list | status=200 | duration_ms=132.79
+2026-07-24 15:44:12,659 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/existing-property-id-list | status=200 | duration_ms=133.07
+2026-07-24 15:44:56,113 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/survey-data-by-existing-property-id | status=200 | duration_ms=1.69
+2026-07-24 15:45:50,391 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/survey-data-by-existing-property-id | status=200 | duration_ms=1.75
+2026-07-24 15:47:31,366 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/survey-data-by-existing-property-id | status=200 | duration_ms=1.70
+2026-07-24 15:47:51,700 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/survey-data-by-existing-property-id | status=200 | duration_ms=1.60
+2026-07-24 15:51:45,616 | ERROR | korba_api | HTTP error on POST /korba-services/survey/all-survey-documents | status=403 | detail=Not authenticated | body=<>
+2026-07-24 15:51:45,616 | WARNING | korba_api | API_RESPONSE | outcome=FAILURE | method=POST | path=/korba-services/survey/all-survey-documents | status=403 | duration_ms=0.99
+2026-07-24 15:52:52,182 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/existing-property-id-list | status=200 | duration_ms=554.77
+2026-07-24 15:52:52,184 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/existing-property-id-list | status=200 | duration_ms=556.27
+2026-07-24 15:53:18,447 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/survey-data-by-existing-property-id | status=200 | duration_ms=106.54
+2026-07-24 15:53:18,477 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/survey-data-by-existing-property-id | status=200 | duration_ms=136.22
+2026-07-24 15:54:09,102 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/all-survey-documents | status=200 | duration_ms=1003.25
+2026-07-24 15:55:05,395 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/existing-property-id-list | status=200 | duration_ms=559.69
+2026-07-24 15:55:05,491 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/existing-property-id-list | status=200 | duration_ms=383.18
+2026-07-24 15:55:24,257 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/survey-data-by-existing-property-id | status=200 | duration_ms=50.31
+2026-07-24 15:55:24,258 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/survey-data-by-existing-property-id | status=200 | duration_ms=51.09
+2026-07-24 15:56:47,963 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/survey-data-by-existing-property-id | status=200 | duration_ms=5.80
+2026-07-24 15:56:47,965 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/survey-data-by-existing-property-id | status=200 | duration_ms=6.69
+2026-07-24 15:57:02,415 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/survey-data-by-existing-property-id | status=200 | duration_ms=1022.15
+2026-07-24 15:58:18,969 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/survey-data-by-existing-property-id | status=200 | duration_ms=1.84
+2026-07-24 15:58:18,984 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/survey-data-by-existing-property-id | status=200 | duration_ms=1.72
+2026-07-24 16:00:13,801 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/survey-data-by-existing-property-id | status=200 | duration_ms=1006.44
+2026-07-24 16:02:35,817 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/survey-data-by-existing-property-id | status=200 | duration_ms=949.58
+2026-07-24 16:04:11,632 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/survey-data-by-existing-property-id | status=200 | duration_ms=848.28
+2026-07-24 16:04:18,474 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/survey-form-submit | status=200 | duration_ms=749.99
+2026-07-24 16:05:11,654 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/existing-property-id-list | status=200 | duration_ms=157.92
+2026-07-24 16:05:11,934 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/existing-property-id-list | status=200 | duration_ms=109.79
+2026-07-24 16:05:12,847 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/survey-data-by-existing-property-id | status=200 | duration_ms=2.42
+2026-07-24 16:05:23,630 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/survey-data-by-existing-property-id | status=200 | duration_ms=1.80
+2026-07-24 16:06:05,484 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/survey-data-by-existing-property-id | status=200 | duration_ms=3.44
+2026-07-24 16:12:42,792 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/auth/login | status=200 | duration_ms=1317.80
+2026-07-24 16:13:17,987 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/existing-property-id-list | status=200 | duration_ms=565.97
+2026-07-24 16:13:21,424 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/existing-property-id-list | status=200 | duration_ms=133.44
+2026-07-24 16:15:12,525 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/survey-data-by-existing-property-id | status=200 | duration_ms=879.31
+2026-07-24 16:18:48,289 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/survey-data-by-existing-property-id | status=200 | duration_ms=1005.09
+2026-07-24 16:19:15,977 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/survey-data-by-existing-property-id | status=200 | duration_ms=505.57
+2026-07-24 16:21:18,732 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/survey-data-by-existing-property-id | status=200 | duration_ms=499.65
+2026-07-24 16:21:20,262 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/survey-data-by-existing-property-id | status=200 | duration_ms=501.82
+2026-07-24 16:22:12,747 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/existing-property-id-list | status=200 | duration_ms=162.99
+2026-07-24 16:22:14,097 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/survey-data-by-existing-property-id | status=200 | duration_ms=501.54
+2026-07-24 16:22:38,381 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/survey-data-by-existing-property-id | status=200 | duration_ms=499.51
+2026-07-24 16:22:40,449 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/survey-data-by-existing-property-id | status=200 | duration_ms=505.36
+2026-07-24 16:28:21,915 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/existing-property-id-list | status=200 | duration_ms=597.43
+2026-07-24 16:28:22,793 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/survey-data-by-existing-property-id | status=200 | duration_ms=485.85
+2026-07-24 16:28:26,819 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/survey-data-by-existing-property-id | status=200 | duration_ms=445.86
+2026-07-24 16:28:29,320 | INFO | korba_api | API_RESPONSE | outcome=SUCCESS | method=POST | path=/korba-services/survey/survey-data-by-existing-property-id | status=200 | duration_ms=447.62

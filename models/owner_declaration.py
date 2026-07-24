@@ -19,32 +19,32 @@ class OwnerDeclaration(Base, TimestampMixin):
 
     # parcel_no: Mapped[str] = mapped_column(
     #     ForeignKey("parcel_master.parcel_no"),
-    #     nullable=False,
+    #    nullable=True,
     #     index=True
     # )
     
     # parcel_no: Mapped[str] = mapped_column(
     #     String(50),
-    #     nullable=False,
+    #    nullable=True,
     #     index=True
     # )
     
 #     property_id: Mapped[str] = mapped_column(
 #     ForeignKey("propertytax.parcel_master.property_id"),
-#     nullable=False,
+#    nullable=True,
 #     index=True
 # )
 
     property_uid: Mapped[str] = mapped_column(
         ForeignKey("propertytax.parcel_master.property_uid"),
-        nullable=False,
+       nullable=True,
         index=True
     )
 
 
     owner_declaration_accepted: Mapped[bool] = mapped_column(
         Boolean,
-        nullable=False
+       nullable=True
     )
 
     owner_signature: Mapped[str | None] = mapped_column(
@@ -59,12 +59,12 @@ class OwnerDeclaration(Base, TimestampMixin):
 
     surveyor_signature: Mapped[str] = mapped_column(
         String(500),
-        nullable=False
+       nullable=True
     )
 
     declaration_date: Mapped[datetime] = mapped_column(
         DateTime,
-        nullable=False,
+       nullable=True,
         default=datetime.utcnow
     )
 

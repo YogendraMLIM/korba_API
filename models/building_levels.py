@@ -17,24 +17,24 @@ class BuildingLevel(Base):
 
     property_uid: Mapped[str] = mapped_column(
         ForeignKey("propertytax.parcel_master.property_uid"),
-        nullable=False,
+       nullable=True,
         index=True
     )
 
     level_type: Mapped[str] = mapped_column(
         String(20),
-        nullable=False
+       nullable=True
     )
     # Basement / Floor
 
     level_no: Mapped[int] = mapped_column(
         Integer,
-        nullable=False
+       nullable=True
     )
 
     area: Mapped[float] = mapped_column(
         Numeric(12,2),
-        nullable=False
+       nullable=True
     )
 
     building = relationship(

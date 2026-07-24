@@ -1,9 +1,10 @@
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict
 
 
 class ParcelMasterBase(BaseModel):
-    parcel_no: str = Field(..., max_length=50)
-    property_id: str = Field(..., max_length=50)
+    parcel_no: str
+    property_id: str
+    existing_property_id: str | None = None
 
 
 class ParcelMasterCreate(ParcelMasterBase):
@@ -11,8 +12,9 @@ class ParcelMasterCreate(ParcelMasterBase):
 
 
 class ParcelMasterUpdate(BaseModel):
-    parcel_no: str | None = Field(None, max_length=50)
-    property_id: str | None = Field(None, max_length=50)
+    parcel_no: str | None = None
+    property_id: str | None = None
+    existing_property_id: str | None = None
     is_active: bool | None = None
 
 

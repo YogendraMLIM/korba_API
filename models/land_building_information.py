@@ -1,4 +1,4 @@
-from sqlalchemy import String, Integer, Numeric, ForeignKey
+from sqlalchemy import String, Integer, Numeric, ForeignKey, Text
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from core.database import Base
@@ -12,26 +12,26 @@ class LandBuildingInformation(Base, TimestampMixin):
 
 #     parcel_no: Mapped[str] = mapped_column(
 #         String(50),
-#         nullable=False,
+#        nullable=True,
 #         index=True
 #     )
     
 #     property_id: Mapped[str] = mapped_column(
 #     ForeignKey("propertytax.parcel_master.property_id"),
-#     nullable=False,
+#    nullable=True,
 #     index=True
 # )
 
     property_uid: Mapped[str] = mapped_column(
     ForeignKey("propertytax.parcel_master.property_uid"),
-    nullable=False,
+   nullable=True,
     index=True
 )
 
 
     plot_area: Mapped[float] = mapped_column(
         Numeric(12, 2),
-        nullable=False
+       nullable=True
     )
 
     ground_floor_area: Mapped[float | None] = mapped_column(
@@ -56,42 +56,48 @@ class LandBuildingInformation(Base, TimestampMixin):
 
     number_of_basement_levels: Mapped[int | None] = mapped_column(
         Integer,
+        default=0,
         nullable=True
     )
 
-    basement_area_1: Mapped[float | None] = mapped_column(
-        Numeric(12, 2),
+    basement_area_1: Mapped[int | None] = mapped_column(
+        Integer,
+        default=0,
         nullable=True
     )
 
-    basement_area_2: Mapped[float | None] = mapped_column(
-        Numeric(12, 2),
+    basement_area_2: Mapped[int | None] = mapped_column(
+        Integer,
+        default=0,
         nullable=True
     )
 
-    basement_area_3: Mapped[float | None] = mapped_column(
-        Numeric(12, 2),
+    basement_area_3: Mapped[int | None] = mapped_column(
+        Integer,
+        default=0,
         nullable=True
     )
 
-    basement_area_4: Mapped[float | None] = mapped_column(
-        Numeric(12, 2),
+    basement_area_4: Mapped[int | None] = mapped_column(
+        Integer,
+        default=0,
         nullable=True
     )
 
-    basement_area_5: Mapped[float | None] = mapped_column(
-        Numeric(12, 2),
+    basement_area_5: Mapped[int | None] = mapped_column(
+        Integer,
+        default=0,
         nullable=True
     )
 
     total_builtup_area: Mapped[float] = mapped_column(
         Numeric(12, 2),
-        nullable=False
+       nullable=True
     )
 
     number_of_floors: Mapped[int] = mapped_column(
         Integer,
-        nullable=False
+       nullable=True
     )
 
     year_of_construction: Mapped[int | None] = mapped_column(
@@ -106,12 +112,12 @@ class LandBuildingInformation(Base, TimestampMixin):
 
     construction_type: Mapped[str] = mapped_column(
         String(20),
-        nullable=False
+       nullable=True
     )
 
     roof_type: Mapped[str] = mapped_column(
         String(20),
-        nullable=False
+       nullable=True
     )
 
     parcel = relationship(

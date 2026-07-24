@@ -12,31 +12,31 @@ class UsageDetails(Base, TimestampMixin):
 
 #     parcel_no: Mapped[str] = mapped_column(
 #         String(50),
-#         nullable=False,
+#        nullable=True,
 #         index=True
 #     )
     
 #     property_id: Mapped[str] = mapped_column(
 #     ForeignKey("propertytax.parcel_master.property_id"),
-#     nullable=False,
+#    nullable=True,
 #     index=True
 # )
 
     property_uid: Mapped[str] = mapped_column(
         ForeignKey("propertytax.parcel_master.property_uid"),
-        nullable=False,
+       nullable=True,
         index=True
     )
 
 
     primary_use: Mapped[str] = mapped_column(
         String(30),
-        nullable=False
+       nullable=True
     )
 
     mixed_use: Mapped[bool] = mapped_column(
         Boolean,
-        nullable=False
+       nullable=True
     )
 
     commercial_activity: Mapped[str | None] = mapped_column(
@@ -46,19 +46,19 @@ class UsageDetails(Base, TimestampMixin):
 
     occupancy: Mapped[str] = mapped_column(
         String(20),
-        nullable=False
+       nullable=True
     )
 
     number_of_families: Mapped[int] = mapped_column(
         Integer,
         default=0,
-        nullable=False
+       nullable=True
     )
 
     number_of_shops: Mapped[int] = mapped_column(
         Integer,
         default=0,
-        nullable=False
+       nullable=True
     )
 
     parcel = relationship(

@@ -20,19 +20,19 @@ class TaxRelatedInformation(Base, TimestampMixin):
 
 #     parcel_no: Mapped[str] = mapped_column(
 #         String(50),
-#         nullable=False,
+#        nullable=True,
 #         index=True
 #     )
     
 #     property_id: Mapped[str] = mapped_column(
 #     ForeignKey("propertytax.parcel_master.property_id"),
-#     nullable=False,
+#    nullable=True,
 #     index=True
 # )
 
     property_uid: Mapped[str] = mapped_column(
         ForeignKey("propertytax.parcel_master.property_uid"),
-        nullable=False,
+       nullable=True,
         index=True
     )
 
@@ -53,12 +53,12 @@ class TaxRelatedInformation(Base, TimestampMixin):
     outstanding_tax: Mapped[float] = mapped_column(
         Numeric(12, 2),
         default=0,
-        nullable=False
+       nullable=True
     )
 
     exempted_property: Mapped[bool] = mapped_column(
         Boolean,
-        nullable=False
+       nullable=True
     )
 
     exemption_category: Mapped[str | None] = mapped_column(

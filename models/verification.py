@@ -12,68 +12,68 @@ class Verification(Base, TimestampMixin):
 
     # parcel_no: Mapped[str] = mapped_column(
     #     String(50),
-    #     nullable=False,
+    #    nullable=True,
     #     index=True
     # )
     
     # property_id: Mapped[str] = mapped_column(
     #     ForeignKey("propertytax.parcel_master.property_id"),
-    #     nullable=False,
+    #    nullable=True,
     #     index=True
     # )
     
     property_uid: Mapped[str] = mapped_column(
     ForeignKey("propertytax.parcel_master.property_uid"),
-    nullable=False,
+   nullable=True,
     index=True
 )
 
 
     unassessed_property: Mapped[bool] = mapped_column(
         Boolean,
-        nullable=False,
+       nullable=True,
         default=False
     )
 
     under_assessed_property: Mapped[bool] = mapped_column(
         Boolean,
-        nullable=False,
+       nullable=True,
         default=False
     )
 
     property_use_changed: Mapped[bool] = mapped_column(
         Boolean,
-        nullable=False,
+       nullable=True,
         default=False
     )
 
     additional_floor_constructed: Mapped[bool] = mapped_column(
         Boolean,
-        nullable=False,
+       nullable=True,
         default=False
     )
 
     boundary_changed: Mapped[bool] = mapped_column(
         Boolean,
-        nullable=False,
+       nullable=True,
         default=False
     )
 
     ownership_changed: Mapped[bool] = mapped_column(
         Boolean,
-        nullable=False,
+       nullable=True,
         default=False
     )
 
     demolished_property: Mapped[bool] = mapped_column(
         Boolean,
-        nullable=False,
+       nullable=True,
         default=False
     )
 
     new_property: Mapped[bool] = mapped_column(
         Boolean,
-        nullable=False,
+       nullable=True,
         default=False
     )
 

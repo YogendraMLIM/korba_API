@@ -3,7 +3,6 @@ from sqlalchemy import (
     String,
     Integer,
     ForeignKey,
-    UniqueConstraint,
 )
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
@@ -14,29 +13,24 @@ from models.base import TimestampMixin
 class SmartAddressing(Base, TimestampMixin):
     __tablename__ = "smart_addressing"
 
-    __table_args__ = (
-        UniqueConstraint(
-            name="uq_street_building_sequence",
-        ),
-    )
 
     id: Mapped[int] = mapped_column(primary_key=True)
 
     # parcel_no: Mapped[str] = mapped_column(
     #     String(50),
-    #     nullable=False,
+    #    nullable=True,
     #     index=True,
     # )
 
     # property_id: Mapped[str] = mapped_column(
     #     ForeignKey("propertytax.parcel_master.property_id"),
-    #     nullable=False,
+    #    nullable=True,
     #     index=True,
     # )
     
     property_uid: Mapped[str] = mapped_column(
     ForeignKey("propertytax.parcel_master.property_uid"),
-    nullable=False,
+   nullable=True,
     index=True
 )
 

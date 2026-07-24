@@ -1,4 +1,5 @@
 from pydantic import BaseModel, Field
+from datetime import datetime
 from typing import Optional
 
 
@@ -8,15 +9,21 @@ class User(BaseModel):
 
 
 class Token(BaseModel):
+    id: int
     username: str
     ward: str | None = None
     zone: str | None = None
+    user_id: str | None = None
     surveyor_name: str | None = None
     surveyor_id: str | None = None
     mobile: str | None = None
     email: str | None = None
     access_token: str
     token_type: str
+    refresh_token: str | None = None
+    token_expiry: datetime | None = None
+    is_logged_in: bool = False
+    last_login: datetime | None = None
     
 class WeatherRequest(BaseModel):
     district: str = ""

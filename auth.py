@@ -21,13 +21,21 @@ def get_user(username: str, password: str):
 
     query = text("""
         SELECT 
+            id,
             zone,
             ward,
+            user_id,
             surveyor_name,
             surveyor_id,
             username,
             mobile,
-            email
+            email,
+            access_token,
+            token_type,
+            refresh_token,
+            token_expiry,
+            is_logged_in,
+            last_login
         FROM propertytax.user_auth
         WHERE username = :username
           AND password = :password
@@ -50,15 +58,23 @@ def get_user(username: str, password: str):
     if row is None:
         return None
 
-    print("User authenticated successfully:", row)
+    # print("User authenticated successfully:", row)
     return {
+        "id": row.id,
         "username": row.username,
         "ward": row.ward,
         "zone": row.zone,
+        "user_id": row.user_id,
         "surveyor_name": row.surveyor_name,
         "surveyor_id": row.surveyor_id,
         "mobile": row.mobile,
-        "email": row.email
+        "email": row.email,
+        "access_token": row.access_token,
+        "token_type": row.token_type,
+        "refresh_token": row.refresh_token,
+        "token_expiry": row.token_expiry,
+        "is_logged_in": row.is_logged_in,
+        "last_login": row.last_login
     }
 
 

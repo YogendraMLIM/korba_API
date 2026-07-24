@@ -4,6 +4,7 @@ from .owner_details import OwnerDetails
 from .occupier_details import OccupierDetails
 from .property_details import PropertyDetails
 from .land_building_information import LandBuildingInformation
+from .land_building_area import LandBuildingArea
 from .usage_details import UsageDetails
 from .tax_related_information import TaxRelatedInformation
 from .utility_connections import UtilityConnections

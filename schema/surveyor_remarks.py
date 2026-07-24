@@ -4,15 +4,9 @@ from pydantic import BaseModel, ConfigDict, Field
 class SurveyorRemarksBase(BaseModel):
 
 
-    surveyor_remarks: str | None = Field(
-        default=None,
-        max_length=1000
-    )
+    surveyor_remarks: str | None = None
 
-    supervisor_remarks: str | None = Field(
-        default=None,
-        max_length=1000
-    )
+    supervisor_remarks: str | None = None
 
 
 class SurveyorRemarksCreate(SurveyorRemarksBase):
@@ -21,15 +15,9 @@ class SurveyorRemarksCreate(SurveyorRemarksBase):
 
 class SurveyorRemarksUpdate(BaseModel):
 
-    surveyor_remarks: str | None = Field(
-        default=None,
-        max_length=1000
-    )
+    surveyor_remarks: str | None = None
 
-    supervisor_remarks: str | None = Field(
-        default=None,
-        max_length=1000
-    )
+    supervisor_remarks: str | None = None
 
 
 class SurveyorRemarksResponse(SurveyorRemarksBase):

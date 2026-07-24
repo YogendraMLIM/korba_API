@@ -1,461 +1,268 @@
+import json
+import re
 from typing import Any, Dict, List
-from fastapi import APIRouter, Depends, File, Form, HTTPException, UploadFile, status,APIRouter
+
+from fastapi import APIRouter, Body, Depends, Form, HTTPException, Request, status
+from sqlalchemy.inspection import inspect
 from sqlalchemy.orm import Session
+
 from auth import verify_token
 from core.database import get_db
-from services.survey_service import SurveyService
-from schema.survey_request import SurveyRequest
-# from services.upload_service import save_document
-from datetime import datetime
-
+from services.survey_service import MODEL_MAPPING, SurveyService
+from services.upload_service import DOCUMENT_FIELDS
 
 
 router = APIRouter()
 
-# @router.post("/survey-form")
-# def create_survey(
-#     request: SurveyRequest,
-#     db: Session = Depends(get_db)
-# ):
-#     return SurveyService(db).save_complete_survey(request)
+SURVEY_SECTIONS = {
+    "survey_information",
+    "owner_details",
+    "occupier_details",
+    "property_details",
+    "land_building_information",
+    "usage_details",
+    "tax_related_information",
+    "utility_connections",
+    "gis_information",
+    "smart_addressing",
+    "verification",
+    "documents_collected",
+    "surveyor_remarks",
+}
 
+GIS_FILE_FIELDS = {
+    "property_photo": "property_photo_base64",
+    "property_photo_base64": "property_photo_base64",
+    "property_photo_path": "property_photo_base64",
+    "front_elevation_photo": "front_elevation_photo_base64",
+    "front_elevation_photo_base64": "front_elevation_photo_base64",
+    "front_elevation_photo_path": "front_elevation_photo_base64",
+    "name_plate_photo": "name_plate_photo_base64",
+    "name_plate_photo_base64": "name_plate_photo_base64",
+    "name_plate_photo_path": "name_plate_photo_base64",
+}
+
+
+def _build_flat_field_sections() -> dict[str, str]:
+    field_sections: dict[str, str] = {}
+    duplicate_fields = set()
+
+    for section, model in MODEL_MAPPING.items():
+        for attr in inspect(model).mapper.column_attrs:
+            field_name = attr.key
+            if field_name in {"id", "property_uid", "created_at", "updated_at"}:
+                continue
+            if field_name in field_sections:
+                duplicate_fields.add(field_name)
+                continue
+            field_sections[field_name] = section
+
+    for field_name in duplicate_fields:
+        field_sections.pop(field_name, None)
+
+    return field_sections
+
+
+FLAT_FIELD_SECTIONS = _build_flat_field_sections()
+
+
+def _parse_form_value(value: Any):
+    if not isinstance(value, str):
+        return value
+
+    text = value.strip()
+    if text == "":
+        return ""
+
+    try:
+        return json.loads(text)
+    except json.JSONDecodeError:
+        return value
+
+
+def _field_parts(field_name: str) -> list[str]:
+    normalized = re.sub(r"\[([^\]]+)\]", r".\1", field_name)
+    parts = [part for part in normalized.split(".") if part]
+
+    if parts and parts[0] in {"payload", "data", "survey_data"}:
+        parts = parts[1:]
+    if parts and parts[0] == "gis_info":
+        parts[0] = "gis_information"
+
+    return parts
+
+
+def _set_nested_value(payload: dict, field_name: str, value: Any):
+    parts = _field_parts(field_name)
+    if not parts:
+        return
+
+    if len(parts) == 1 and parts[0] in FLAT_FIELD_SECTIONS:
+        payload.setdefault(FLAT_FIELD_SECTIONS[parts[0]], {})[parts[0]] = value
+        return
+
+    current = payload
+    for part in parts[:-1]:
+        current = current.setdefault(part, {})
+
+    leaf = parts[-1]
+    if leaf in current:
+        if not isinstance(current[leaf], list):
+            current[leaf] = [current[leaf]]
+        current[leaf].append(value)
+    else:
+        current[leaf] = value
+
+
+#   Append file data to the appropriate section in the survey payload based on field name and hints
+def _append_file(
+    payload: dict,
+    field_name: str,
+    file_data: dict,
+    filename: str | None = None,
+):
+    parts = _field_parts(field_name)
+    leaf = parts[-1] if parts else field_name
+    parent = parts[-2] if len(parts) > 1 else None
+    file_hint = f"{field_name} {filename or ''}".lower()
+
+    if leaf in GIS_FILE_FIELDS or parent == "gis_information":
+        gis_field = GIS_FILE_FIELDS.get(leaf, leaf)
+        payload.setdefault("gis_information", {}).setdefault(gis_field, []).append(file_data)
+        return
+
+    for gis_name, gis_field in GIS_FILE_FIELDS.items():
+        if gis_name in file_hint:
+            payload.setdefault("gis_information", {}).setdefault(gis_field, []).append(file_data)
+            return
+
+    document_field = leaf
+    if document_field in DOCUMENT_FIELDS:
+        document_field = f"{document_field}_files"
+
+    if document_field.endswith("_files"):
+        payload.setdefault("documents_collected", {}).setdefault(document_field, []).append(file_data)
+        return
+
+    for field in DOCUMENT_FIELDS:
+        if field in file_hint:
+            payload.setdefault("documents_collected", {}).setdefault(f"{field}_files", []).append(file_data)
+            return
+
+    payload.setdefault("documents_collected", {}).setdefault("other_documents_files", []).append(file_data)
+
+
+# Convert multipart/form-data request to a structured survey payload
+async def _multipart_to_survey_payload(request: Request) -> dict:
+    payload: dict[str, Any] = {}
+    form = await request.form()
+
+    for key, value in form.multi_items():
+        if hasattr(value, "filename") and hasattr(value, "read"):
+            content = await value.read()
+            if not content:
+                continue
+
+            file_data = {
+                "filename": value.filename,
+                "content_type": value.content_type or "application/octet-stream",
+                "content": content,
+            }
+            _append_file(payload, key, file_data, value.filename)
+            continue
+
+        parsed_value = _parse_form_value(value)
+
+        if key in {"payload", "data", "survey_data"}:
+            if isinstance(parsed_value, dict):
+                payload.update(parsed_value)
+            continue
+
+        if key == "gis_info":
+            payload.setdefault("gis_information", {})
+            if isinstance(parsed_value, dict):
+                payload["gis_information"].update(parsed_value)
+            continue
+
+        if isinstance(parsed_value, dict) and key in SURVEY_SECTIONS:
+            payload.setdefault(key, {})
+            payload[key].update(parsed_value)
+            continue
+
+        _set_nested_value(payload, key, parsed_value)
+
+    return payload
+
+
+# Save Survey Form Data into json (including GIS and other documents) to the database
 @router.post("/survey-form")
 def create_survey(
-    request: SurveyRequest,
-    db: Session = Depends(get_db)
+    request: Dict[str, Any],
+    db: Session = Depends(get_db),
 ):
-    return SurveyService(db).save_complete_survey(
-        request.model_dump(exclude_none=True)
-    )
-    
-@router.post("/bulk-sync")
-def create_bulk_surveys(
-    requests: List[SurveyRequest],
-    token_data: dict = Depends(verify_token),
-    db: Session = Depends(get_db)
-):
+    return SurveyService(db).save_complete_survey(request)
 
-    return SurveyService(db).save_bulk_surveys(
-        [request.model_dump(exclude_none=True) for request in requests]
-    )
-    
-@router.post("/completed-survey-data")
+# Save Survey Form Data (including GIS and other documents) to the database
+@router.post("/survey-form-submit")
+async def submit_survey_form(
+    request: Request,
+    db: Session = Depends(get_db),
+):
+    payload = await _multipart_to_survey_payload(request)
+    return SurveyService(db).submit_survey_form(payload)
+
+
+@router.post("/bulk-sync", dependencies=[Depends(verify_token)])
+def create_bulk_surveys(
+    requests: List[Dict[str, Any]],
+    db: Session = Depends(get_db),
+):
+    return SurveyService(db).save_bulk_surveys(requests)
+
+
+@router.post("/completed-survey-data", dependencies=[Depends(verify_token)])
 def get_completed_survey_data(
     surveyor_id: str = Form(...),
-    token_data: dict = Depends(verify_token),
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
 ):
     return SurveyService(db).get_completed_survey_data(surveyor_id)
 
-@router.post("/upload-document")
-async def upload_document(
-    property_id: str = Form(...),
-    files: List[UploadFile] = File(...),
-    token_data: dict = Depends(verify_token),
-    db: Session = Depends(get_db),
-):
-    try:
 
-        uploaded_files = {}
-
-        for file in files:
-
-            document_name = file.filename.rsplit(".", 1)[0]
-
-            file_path = save_document(
-                property_id=property_id,
-                document_name=document_name,
-                file=file,
-            )
-
-            uploaded_files[document_name] = file_path
-
-        return {
-            "success": True,
-            "property_id": property_id,
-            "documents": uploaded_files,
-        }
-
-    except Exception as e:
-        raise HTTPException(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail=str(e),
-        )
-
+# All survey documents (including GIS and other documents) for all surveys in the database
 @router.post("/all-survey-documents")
 async def get_all_data(
-    token_data: dict = Depends(verify_token),
     db: Session = Depends(get_db),
 ):
     try:
         return SurveyService(db).get_all_survey_documents()
-
-    except Exception as e:
+    except Exception as exc:
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail=str(e),
+            detail=str(exc),
         )
 
-# ):
-#     payload = map_frontend_to_backend(request)
 
-#     survey_request = SurveyRequest.model_validate(payload)
-
-#     return SurveyService(db).save_complete_survey(
-#         survey_request.model_dump(exclude_none=True)
-#     )
-    
+# Retrun a list of existing property IDs from the survey data
+@router.post("/existing-property-id-list")
+def get_existing_property_ids(
+    db: Session = Depends(get_db),
+):
+    return SurveyService(db).get_existing_property_ids()
 
 
-def to_bool(value):
-    """Convert Yes/No or boolean to bool."""
-    if isinstance(value, bool):
-        return value
+# Get survey data by existing property ID
+@router.post("/survey-data-by-existing-property-id")
+def get_survey_data_by_existing_property_id(
+    request: dict = Body(...),
+    db: Session = Depends(get_db),
+):
+    existing_property_ids = request.get("existing_property_ids")
 
-    if value is None:
-        return None
+    if isinstance(existing_property_ids, str):
+        existing_property_ids = [existing_property_ids]
 
-    return str(value).strip().lower() == "yes"
-
-
-def to_float(value):
-    if value in ("", None):
-        return 0.0
-    return float(value)
-
-
-def to_int(value):
-    if value in ("", None):
-        return 0
-    return int(float(value))
-
-
-def to_datetime(value):
-    if not value:
-        return None
-
-    return datetime.strptime(
-        value,
-        "%d/%m/%Y, %H:%M:%S"
+    return SurveyService(db).get_survey_data_by_existing_property_id(
+        existing_property_ids or []
     )
-
-
-def to_date(value):
-    if not value:
-        return None
-
-    return datetime.strptime(
-        value,
-        "%d/%m/%Y"
-    ).date()
-
-def map_document(value):
-    return None if value is True else value
-
-def map_frontend_to_backend(data: dict) -> dict:
-
-    survey = data["surveys"]
-
-    return {
-
-        "survey_information": {
-
-            "survey_id": survey["survey_id"],
-            "parcel_no": survey["parcel_no"],
-            "property_id": survey.get("property_id"),
-            "survey_date": to_datetime(survey["survey_date"]),
-            "surveyor_name": survey["surveyor_name"],
-            "surveyor_id": survey["surveyor_id"],
-            "ward_no": survey["ward_no"],
-            "zone": survey["zone"],
-
-            "colony_locality":
-                survey["survey_info"]["colony"],
-
-            "street_road_name":
-                survey["survey_info"]["street_name"],
-
-            "lane_no":
-                survey["survey_info"]["lane_no"],
-
-            "existing_property_id":
-                survey["survey_info"]["existing_property_id"],
-
-            "digital_door_number":
-                survey["survey_info"]["ddn"],
-
-            "gps_latitude":
-                to_float(survey["survey_info"]["gps_latitude"]),
-
-            "gps_longitude":
-                to_float(survey["survey_info"]["gps_longitude"])
-        },
-
-        "owner_details": {
-
-            "owner_name":
-                survey["owner_details"]["owner_name"],
-
-            "father_husband_name":
-                survey["owner_details"]["father_husband_name"],
-
-            "mobile_number":
-                survey["owner_details"]["mobile_number"],
-
-            "alternate_mobile":
-                survey["owner_details"]["alternate_mobile"],
-
-            "aadhaar_no":
-                survey["owner_details"]["aadhaar_no"],
-
-            "email":
-                survey["owner_details"]["email_id"],
-
-            "correspondence_address":
-                survey["owner_details"]["correspondence_address"]
-        },
-
-        "occupier_details": {
-
-            "occupier_name":
-                survey["occupier_details"]["occupier_name"],
-
-            "mobile_number":
-                survey["occupier_details"]["occupier_mobile"],
-
-            "occupancy_status":
-                survey["occupier_details"]["occupancy_status"],
-
-            "tenant_since":
-                to_date(survey["occupier_details"]["tenant_since"])
-        },
-
-        "property_details": {
-
-            "property_type":
-                survey["property_details"]["property_type"],
-
-            "property_status":
-                survey["property_details"]["property_status"],
-
-            "building_permission_available":
-                to_bool(survey["property_details"]["building_permission"]),
-
-            "property_ownership":
-                survey["property_details"]["property_ownership"]
-        },
-
-        "land_building_information": {
-
-            "plot_area":
-                to_float(survey["land_building"]["plot_area"]),
-
-            "ground_floor_area":
-                to_float(survey["land_building"]["ground_floor"]),
-
-            "first_floor_area":
-                to_float(survey["land_building"]["first_floor"]),
-
-            "second_floor_area":
-                to_float(survey["land_building"]["second_floor"]),
-
-            "third_floor_area":
-                to_float(survey["land_building"]["third_floor"]),
-
-            "number_of_floors":
-                to_int(survey["land_building"]["number_of_floors"]),
-
-            "year_of_construction":
-                to_int(survey["land_building"]["year_construction"]),
-
-            "total_builtup_area":
-                to_float(survey["land_building"]["total_built_up"]),
-
-            "building_age":
-                to_int(survey["land_building"]["building_age"]),
-
-            "construction_type":
-                survey["land_building"]["construction_type"],
-
-            "roof_type":
-                survey["land_building"]["roof_type"]
-        },
-
-        "usage_details": {
-
-            "primary_use":
-                survey["usage_details"]["primary_use"],
-
-            "mixed_use":
-                to_bool(survey["usage_details"]["mixed_use"]),
-
-            "commercial_activity":
-                survey["usage_details"]["commercial_activity"],
-
-            "occupancy":
-                survey["usage_details"]["occupancy"],
-
-            "number_of_families":
-                to_int(survey["usage_details"]["number_of_families"]),
-
-            "number_of_shops":
-                to_int(survey["usage_details"]["number_of_shops"])
-        },
-
-        "tax_related_information": {
-
-            "existing_property_tax_no":
-                survey["tax_info"]["existing_tax_no"],
-
-            "tax_paid_till":
-                to_date(survey["tax_info"]["tax_paid_till"]),
-
-            "outstanding_tax":
-                to_float(survey["tax_info"]["outstanding_tax"]),
-
-            "exempted_property":
-                to_bool(survey["tax_info"]["exempted"]),
-
-            "exemption_category":
-                survey["tax_info"]["exemption_category"]
-        },
-
-        "utility_connections": {
-
-            "water_connection_no":
-                survey["utilities"]["water_connection"],
-
-            "sewer_connection":
-                to_bool(survey["utilities"]["sewer_connection"]),
-
-            "electricity_consumer_no":
-                survey["utilities"]["electricity_consumer"],
-
-            "gas_connection":
-                to_bool(survey["utilities"]["gas_connection"]),
-
-            "trade_license_no":
-                survey["utilities"]["trade_license"],
-
-            "factory_license_no":
-                survey["utilities"]["factory_license"]
-        },
-
-        "gis_information": {
-
-            "gis_property_polygon_available":
-                to_bool(survey["gis_info"]["polygon_available"]),
-
-            "property_boundary_verified":
-                to_bool(survey["gis_info"]["boundary_verified"]),
-
-            "geo_tag_completed":
-                to_bool(survey["gis_info"]["geo_tag_completed"]),
-
-            "property_photo_captured":
-                to_bool(survey["gis_info"]["property_photo"]),
-
-            "front_elevation_photo":
-                to_bool(survey["gis_info"]["front_elevation"]),
-
-            "name_plate_photo":
-                to_bool(survey["gis_info"]["name_plate"])
-        },
-
-        "smart_addressing": {
-
-            "ddn_generated":
-                to_bool(survey["smart_addressing"]["ddn_generated"]),
-
-            "ddn_sticker_affixed":
-                to_bool(survey["smart_addressing"]["ddn_sticker"]),
-
-            "qr_code_affixed":
-                to_bool(survey["smart_addressing"]["qr_code"]),
-
-            "street_code":
-                survey["smart_addressing"]["street_code"],
-
-            "building_sequence_no":
-                to_int(survey["smart_addressing"]["building_sequence"])
-        },
-
-        "verification": {
-
-            "unassessed_property":
-                survey["verification"]["unassessedProperty"],
-
-            "under_assessed_property":
-                survey["verification"]["underAssessedProperty"],
-
-            "property_use_changed":
-                survey["verification"]["propertyUseChanged"],
-
-            "additional_floor_constructed":
-                survey["verification"]["additionalFloorConstructed"],
-
-            "boundary_changed":
-                survey["verification"]["boundaryChanged"],
-
-            "ownership_changed":
-                survey["verification"]["ownershipChanged"],
-
-            "demolished_property":
-                survey["verification"]["demolishedProperty"],
-
-            "new_property":
-                survey["verification"]["newProperty"]
-        },
-
-        "documents_collected": {
-                "aadhaar_copy": map_document(
-                    survey["documents"]["aadhaarCopy"]
-                ),
-            "electricity_bill": map_document(
-                survey["documents"]["electricityBill"]
-            ),
-            "water_bill": map_document(
-                survey["documents"]["waterBill"]
-            ),
-
-            "sale_deed":map_document(
-                survey["documents"]["saleDeed"]),
-
-            "property_tax_receipt":map_document(
-                survey["documents"]["propertyTaxReceipt"]),
-
-            "building_permission":map_document(
-                survey["documents"]["buildingPermissionDoc"]),
-
-            "other_documents":map_document(
-                survey["documents"].get("otherDocuments"))
-        },
-
-        "surveyor_remarks": {
-
-            "surveyor_remarks":
-                survey["surveyor_remarks"],
-
-            "supervisor_remarks":
-                survey["supervisor_remarks"]
-        },
-
-        "owner_declaration": {
-
-            "owner_declaration_accepted":
-                survey["owner_declaration"],
-
-            "owner_signature":
-                survey["owner_signature_path"],
-
-            "owner_refusal_reason":
-                None,
-
-            "surveyor_signature":
-                survey["surveyor_signature_path"],
-
-            "declaration_date":
-                to_datetime(survey["declaration_date"])
-        }
-    }
     
+   

@@ -1,4 +1,5 @@
 import base64
+import re
 from pathlib import Path
 
 BASE_UPLOAD_DIR = Path("documents")
@@ -12,6 +13,112 @@ DOCUMENT_FIELDS = [
     "building_permission",
     "other_documents",
 ]
+
+
+def _safe_filename(filename: str | None, fallback: str) -> str:
+    name = Path(filename or fallback).name
+    name = re.sub(r"[^A-Za-z0-9._-]+", "_", name).strip("._")
+    return name or fallback
+
+
+def _unique_path(folder: Path, filename: str) -> Path:
+    filepath = folder / filename
+    if not filepath.exists():
+        return filepath
+
+    stem = filepath.stem
+    suffix = filepath.suffix
+    index = 2
+    while True:
+        candidate = folder / f"{stem}_{index}{suffix}"
+        if not candidate.exists():
+            return candidate
+        index += 1
+
+
+def _save_upload_file(
+    parcel_no: str,
+    property_id: str,
+    category: str,
+    filename: str | None,
+    content: bytes,
+    fallback_name: str,
+) -> str | None:
+    if not content:
+        return None
+
+    folder = (
+        BASE_UPLOAD_DIR
+        / category
+        / str(parcel_no)
+        / str(property_id)
+    )
+    folder.mkdir(parents=True, exist_ok=True)
+
+    filepath = _unique_path(folder, _safe_filename(filename, fallback_name))
+    with open(filepath, "wb") as f:
+        f.write(content)
+
+    return filepath.as_posix()
+
+
+def save_upload_documents(
+    parcel_no: str,
+    property_id: str,
+    documents: dict,
+) -> list[dict]:
+    saved_documents = []
+
+    for field in DOCUMENT_FIELDS:
+        files = documents.get(f"{field}_files", [])
+        if not files:
+            continue
+
+        for index, upload in enumerate(files, start=1):
+            if not isinstance(upload, dict):
+                continue
+
+            file_path = _save_upload_file(
+                parcel_no=parcel_no,
+                property_id=property_id,
+                category=field,
+                filename=upload.get("filename"),
+                content=upload.get("content") or b"",
+                fallback_name=f"{field}{index}.bin",
+            )
+            if file_path:
+                saved_documents.append(
+                    {
+                        "document_type": field,
+                        "file_path": file_path,
+                    }
+                )
+
+    return saved_documents
+
+
+def save_single_upload_image(
+    parcel_no: str,
+    property_id: str,
+    category: str,
+    file_name: str,
+    upload: dict | None,
+) -> str | None:
+    if not isinstance(upload, dict):
+        return None
+
+    original_name = _safe_filename(upload.get("filename"), f"{file_name}.bin")
+    suffix = Path(original_name).suffix
+    fallback_name = f"{file_name}{suffix or '.bin'}"
+
+    return _save_upload_file(
+        parcel_no=parcel_no,
+        property_id=property_id,
+        category=category,
+        filename=original_name,
+        content=upload.get("content") or b"",
+        fallback_name=fallback_name,
+    )
 
 
 def save_base64_documents(

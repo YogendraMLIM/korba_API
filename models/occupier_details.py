@@ -13,7 +13,7 @@ class OccupierDetails(Base, TimestampMixin):
     id: Mapped[int] = mapped_column(primary_key=True)
     property_uid: Mapped[str] = mapped_column(
         ForeignKey("propertytax.parcel_master.property_uid"),
-        nullable=False,
+       nullable=True,
         index=True
 )
 
@@ -30,7 +30,7 @@ class OccupierDetails(Base, TimestampMixin):
 
     occupancy_status: Mapped[str] = mapped_column(
         String(20),
-        nullable=False
+       nullable=True
     )
 
     tenant_since: Mapped[date | None] = mapped_column(

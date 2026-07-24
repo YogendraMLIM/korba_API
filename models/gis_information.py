@@ -12,39 +12,39 @@ class GISInformation(Base, TimestampMixin):
 
     property_uid: Mapped[str] = mapped_column(
         ForeignKey("propertytax.parcel_master.property_uid"),
-        nullable=False,
+       nullable=True,
         index=True
     )
 
     gis_property_polygon_available: Mapped[bool] = mapped_column(
         Boolean,
-        nullable=False
+       nullable=True
     )
 
     property_boundary_verified: Mapped[bool] = mapped_column(
         Boolean,
-        nullable=False
+       nullable=True
     )
 
     geo_tag_completed: Mapped[bool] = mapped_column(
         Boolean,
-        nullable=False
+       nullable=True
     )
 
     property_photo_captured: Mapped[bool] = mapped_column(
         Boolean,
-        nullable=False
+       nullable=True
     )
 
     front_elevation_photo: Mapped[bool] = mapped_column(
         Boolean,
-        nullable=False
+       nullable=True
     )
 
     name_plate_photo: Mapped[bool] = mapped_column(
         Boolean,
         default=False,
-        nullable=False
+       nullable=True
     )
 
     # Store uploaded image paths

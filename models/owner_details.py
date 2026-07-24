@@ -12,36 +12,36 @@ class OwnerDetails(Base, TimestampMixin):
 
 #     parcel_no: Mapped[str] = mapped_column(
 #         String(50),
-#         nullable=False,
+#        nullable=True,
 #         index=True
 #     )
         
 #     property_id: Mapped[str] = mapped_column(
 #     ForeignKey("propertytax.parcel_master.property_id"),
-#     nullable=False,
+#    nullable=True,
 #     index=True
 # )
 
     property_uid: Mapped[str] = mapped_column(
         ForeignKey("propertytax.parcel_master.property_uid"),
-        nullable=False,
+       nullable=True,
         index=True
     )
 
 
     owner_name: Mapped[str] = mapped_column(
         String(200),
-        nullable=False
+       nullable=True
     )
 
     father_husband_name: Mapped[str] = mapped_column(
         String(200),
-        nullable=False
+       nullable=True
     )
 
     mobile_number: Mapped[str] = mapped_column(
         String(10),
-        nullable=False
+       nullable=True
     )
 
     alternate_mobile: Mapped[str | None] = mapped_column(
@@ -61,7 +61,7 @@ class OwnerDetails(Base, TimestampMixin):
 
     correspondence_address: Mapped[str] = mapped_column(
         String(500),
-        nullable=False
+       nullable=True
     )
 
     parcel = relationship(

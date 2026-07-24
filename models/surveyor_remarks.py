@@ -12,20 +12,20 @@ class SurveyorRemarks(Base, TimestampMixin):
 
 #     parcel_no: Mapped[str] = mapped_column(
 #         String(50),
-#         nullable=False,
+#        nullable=True,
 #         index=True
 #     )
         
 #     property_id: Mapped[str] = mapped_column(
 #     ForeignKey("propertytax.parcel_master.property_id"),
-#     nullable=False,
+#    nullable=True,
 #     index=True
 # )
 
 
     property_uid: Mapped[str] = mapped_column(
         ForeignKey("propertytax.parcel_master.property_uid"),
-        nullable=False,
+       nullable=True,
         index=True
     )
 
