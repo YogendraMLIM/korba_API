@@ -37,7 +37,7 @@ class LandBuildingInformationBase(BaseModel):
 
     basement_areas: dict[str, Any] | list[Any] | None = None
 
-    number_of_floors: int
+    number_of_floors: int | None = None
 
     year_of_construction: int | None = None
     
@@ -45,9 +45,9 @@ class LandBuildingInformationBase(BaseModel):
 
     building_age: int | None = None
 
-    construction_type: str
+    construction_type: str | None = None
 
-    roof_type: str
+    roof_type: str | None = None
 
 
 class LandBuildingInformationCreate(
@@ -58,6 +58,8 @@ class LandBuildingInformationCreate(
 
 class LandBuildingInformationUpdate(BaseModel):
     model_config = ConfigDict(extra="allow")
+
+  
 
     plot_area: float | None = None
     ground_floor_area: float | None = None
@@ -89,5 +91,3 @@ class LandBuildingInformationResponse(
     total_builtup_area: float
 
     building_age: int | None
-
-    model_config = ConfigDict(from_attributes=True)

@@ -10,6 +10,8 @@ from sqlalchemy.orm import (
     relationship
 )
 
+from core.database import Base
+
 class BuildingLevel(Base):
     __tablename__ = "building_levels"
 

@@ -1,8 +1,6 @@
 from models.user_auth import UserAuth
 from schema.user_auth import UserCreate, UserSync
-from utils.helper import generate_unique_id
-
-
+from utils.generate_id import generate_unique_id
 
 
 class UserService:

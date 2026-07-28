@@ -43,6 +43,26 @@ class LandBuildingArea(Base, TimestampMixin):
        nullable=True
     )
 
+    usage_factor: Mapped[str | None] = mapped_column(
+        String(100),
+        nullable=True
+    )
+
+    usage_type: Mapped[str | None] = mapped_column(
+        String(100),
+        nullable=True
+    )
+
+    construction_type: Mapped[str | None] = mapped_column(
+        String(50),
+        nullable=True
+    )
+
+    roof_type: Mapped[str | None] = mapped_column(
+        String(50),
+        nullable=True
+    )
+
     parcel = relationship(
         "ParcelMaster",
         back_populates="land_building_areas"
